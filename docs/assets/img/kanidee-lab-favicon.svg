@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" width="320" height="320">
+  <!-- Sparkles -->
+  <path d="M 80,66 Q 80,80 66,80 Q 80,80 80,94 Q 80,80 94,80 Q 80,80 80,66 Z" fill="#dc2626" />
+  <circle cx="62" cy="126" r="3.5" fill="#dc2626" />
+  <circle cx="98" cy="52" r="2.5" fill="#ea580c" />
+  <path d="M 248,202 Q 248,208 242,208 Q 248,208 248,214 Q 248,208 254,208 Q 248,208 248,202 Z" fill="#ea580c" />
+
+  <!-- Back Half of Orbit Ring -->
+  <g transform="rotate(-23 160 168)">
+    <path d="M 36,168 A 128 34 0 0 1 284,168" fill="none" stroke="#0f172a" stroke-width="10" stroke-linecap="round" />
+  </g>
+
+  <!-- Flask Body Inner White Base -->
+  <path d="M 144,44 L 144,78 C 144,92 134,102 122,112 C 106,126 96,146 96,168 C 96,203.3 124.7,232 160,232 C 195.3,232 224,203.3 224,168 C 224,146 214,126 198,112 C 186,102 176,92 176,78 L 176,44 Z" fill="#ffffff" />
+
+  <!-- Liquid inside Bulb (Arc radius 64) -->
+  <path d="M 99,148 C 120,166 148,140 221,148 A 64 64 0 1 1 99,148 Z" fill="#dc2626" />
+
+  <!-- Cyan Meniscus Highlight -->
+  <path d="M 102,148 C 125,162 145,148 166,144 C 145,146 125,158 102,146 Z" fill="#38bdf8" />
+
+  <!-- Green Bubble in Liquid -->
+  <circle cx="130" cy="184" r="11" fill="#84cc16" stroke="#4d7c0f" stroke-width="1.5" />
+
+  <!-- Red Floating Bubbles -->
+  <circle cx="148" cy="108" r="12" fill="#dc2626" />
+  <circle cx="178" cy="120" r="6" fill="#dc2626" />
+  <circle cx="116" cy="114" r="4.5" fill="#dc2626" />
+  <circle cx="190" cy="174" r="7" fill="#f97316" opacity="0.9" />
+
+  <!-- Flask Outline Contour -->
+  <rect x="134" y="26" width="52" height="13" rx="6.5" fill="#0f172a" />
+  <rect x="140" y="39" width="40" height="5" rx="2.5" fill="#0f172a" />
+  <path d="M 144,44 L 144,78 C 144,92 134,102 122,112 C 106,126 96,146 96,168 C 96,203.3 124.7,232 160,232 C 195.3,232 224,203.3 224,168 C 224,146 214,126 198,112 C 186,102 176,92 176,78 L 176,44" 
+        fill="none" stroke="#0f172a" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" />
+
+  <!-- Front Half of Orbit Ring -->
+  <g transform="rotate(-23 160 168)">
+    <path d="M 36,168 A 128 34 0 0 0 284,168" fill="none" stroke="#0f172a" stroke-width="10" stroke-linecap="round" />
+  </g>
+</svg>

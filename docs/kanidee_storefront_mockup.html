@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kanidee Lab — Belajar Diet Sehat & Panduan Nutrisi Praktis</title>
+  <meta name="description" content="Kanidee Lab menghadirkan panduan diet sehat, kurikulum gizi, dan e-book nutrisi praktis berbasis kearifan lokal kuliner Indonesia tanpa rasa lemas.">
+  <link rel="icon" type="image/svg+xml" href="assets/img/kanidee-lab-favicon.svg">
+  <link rel="alternate icon" href="assets/img/favicon.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #0f172a;
+      background-color: #ffffff;
+    }
+    h1, h2, h3, h4, h5, .font-heading {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .knd-shadow {
+      box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
+    }
+    .knd-shadow-hover:hover {
+      box-shadow: 0 12px 32px -4px rgba(234, 88, 12, 0.12), 0 4px 12px -2px rgba(15, 23, 42, 0.06);
+    }
+    .tab-transition {
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-[#0f172a] antialiased">
+
+  <!-- ========================================================================= -->
+  <!-- 1. STICKY NAVBAR (Spacious, Uncluttered, with Kanidee Lab Vector Identity)  -->
+  <!-- ========================================================================= -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-[#e2e8f0] transition-all">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      
+      <!-- Brand Logo & Identity (Refined Kanidee Lab Orbital Flask Mark) -->
+      <a href="#hero" class="flex items-center gap-3 group shrink-0 mr-8 lg:mr-10">
+        <img src="assets/img/kanidee-lab-icon.svg" alt="Kanidee Lab" class="w-10 h-10 object-contain group-hover:scale-105 tab-transition drop-shadow-sm">
+        <div class="leading-tight">
+          <span class="font-extrabold text-base tracking-tight text-[#0f172a] block">KANIDEE LAB</span>
+          <span class="text-[11px] text-[#64748b] font-medium block whitespace-nowrap">Diet &amp; Lifestyle Builder</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links (Spacious 5-Item Navigation with Generous Breathing Room) -->
+      <nav class="hidden lg:flex items-center gap-7 text-xs font-semibold text-[#64748b]">
+        <a href="#hero" class="py-1.5 hover:text-[#ea580c] tab-transition whitespace-nowrap">Beranda</a>
+        <a href="#program" class="py-1.5 hover:text-[#ea580c] tab-transition whitespace-nowrap">Katalog Program</a>
+        <a href="#tentang" class="py-1.5 hover:text-[#ea580c] tab-transition whitespace-nowrap">Tentang Coach</a>
+        <a href="#artikel" class="py-1.5 hover:text-[#ea580c] tab-transition whitespace-nowrap">Artikel Gizi</a>
+        <a href="#download" class="py-1.5 hover:text-[#ea580c] tab-transition whitespace-nowrap">Download Center</a>
+      </nav>
+
+      <!-- Right Action CTAs & Mobile Hamburger -->
+      <div class="flex items-center gap-2.5 shrink-0 ml-auto lg:ml-8">
+        <a href="kanidee_cms_mockup.html" class="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1.5 rounded-lg text-slate-600 hover:text-[#0f172a] hover:bg-slate-100 border border-slate-200 tab-transition whitespace-nowrap">
+          <span>⚙️</span> CMS Admin ↗
+        </a>
+        <a href="https://wa.me/6281234567890" target="_blank" class="inline-flex items-center gap-1.5 text-xs font-bold px-3.5 py-1.5 rounded-lg bg-[#ea580c] hover:bg-[#c2410c] active:scale-[0.98] text-white shadow-sm tab-transition whitespace-nowrap">
+          <span>💬</span> WhatsApp
+        </a>
+        <!-- Mobile & Tablet Menu Toggle Button (Visible on < 1024px) -->
+        <button onclick="toggleMobileMenu()" class="lg:hidden w-9 h-9 rounded-lg bg-slate-100 hover:bg-slate-200 active:scale-95 text-[#0f172a] flex items-center justify-center font-bold text-base tab-transition cursor-pointer" aria-label="Buka Menu Navigasi">
+          <span id="mobile-menu-icon">☰</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile & Tablet Navigation Drawer (< 1024px) -->
+    <div id="mobile-menu-drawer" class="hidden lg:hidden border-t border-slate-200 bg-white/98 backdrop-blur-md px-4 py-3 space-y-1 shadow-lg">
+      <a href="#hero" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-xs font-semibold text-[#0f172a] hover:bg-orange-50 hover:text-[#ea580c]">Beranda</a>
+      <a href="#keunggulan" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-xs font-semibold text-[#0f172a] hover:bg-orange-50 hover:text-[#ea580c]">Keunggulan</a>
+      <a href="#program" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-xs font-semibold text-[#0f172a] hover:bg-orange-50 hover:text-[#ea580c]">Program &amp; E-Book</a>
+      <a href="#tentang" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-xs font-semibold text-[#0f172a] hover:bg-orange-50 hover:text-[#ea580c]">Tentang Coach</a>
+      <a href="#artikel" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-xs font-semibold text-[#0f172a] hover:bg-orange-50 hover:text-[#ea580c]">Artikel Gizi</a>
+      <a href="#download" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-xs font-semibold text-[#0f172a] hover:bg-orange-50 hover:text-[#ea580c]">Download Center</a>
+      <a href="#testimoni" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-xs font-semibold text-[#0f172a] hover:bg-orange-50 hover:text-[#ea580c]">Testimoni</a>
+      <div class="pt-2 border-t border-slate-100 flex gap-2">
+        <a href="kanidee_cms_mockup.html" class="flex-1 py-2 text-center text-xs font-bold rounded-lg bg-slate-100 text-[#0f172a] border border-slate-200">⚙️ CMS Admin ↗</a>
+        <a href="https://wa.me/6281234567890" target="_blank" class="flex-1 py-2 text-center text-xs font-bold rounded-lg bg-[#ea580c] text-white">💬 WhatsApp</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================= -->
+  <!-- 2. HERO SECTION (Full-Width Desktop Visual Rhythm like MasJanis)         -->
+  <!-- ========================================================================= -->
+  <section id="hero" class="relative overflow-hidden bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#c2410c] text-white py-16 md:py-24">
+    <!-- Subtle Ambient Glow -->
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(234,88,12,0.25),transparent_50%)] pointer-events-none"></div>
+
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-6 relative z-10">
+      <!-- Tag Badge -->
+      <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md border border-white/25 px-4 py-1.5 rounded-full text-xs font-bold text-orange-200 tracking-wide uppercase">
+        <span>🌅</span>
+        <span>Konsep Pelatihan Diet Paripurna</span>
+      </div>
+
+      <!-- Main Heading -->
+      <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight text-white">
+        Buku E-Digital Kesehatan & <br class="hidden sm:block">
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-300 via-amber-200 to-orange-400">
+          Panduan Diet Praktis
+        </span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-sm sm:text-base md:text-lg text-orange-100/90 max-w-2xl mx-auto leading-relaxed">
+        Belajar banyak di sini: Edukasi kesehatan praktis yang memberikan edukasi gizi ilmiah sekaligus resep membumi ramah pasar tradisional. Bebas lemas, tanpa obat pelangsing.
+      </p>
+
+      <!-- Dual Action Buttons (MasJanis Button Hierarchy) -->
+      <div class="flex flex-wrap items-center justify-center gap-3 pt-4">
+        <a href="#program" class="px-6 py-3.5 rounded-xl bg-[#ea580c] hover:bg-[#c2410c] active:scale-[0.98] text-white text-xs sm:text-sm font-extrabold shadow-lg hover:shadow-orange-500/25 tab-transition flex items-center gap-2">
+          <span>🛒</span>
+          <span>Jelajahi Program Diet</span>
+        </a>
+        <a href="#tentang" class="px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 active:scale-[0.98] text-white text-xs sm:text-sm font-semibold border border-white/20 tab-transition flex items-center gap-2">
+          <span>📖</span>
+          <span>Pelajari Metodologi</span>
+        </a>
+      </div>
+
+      <!-- Quick Scroll Anchor -->
+      <div class="pt-8">
+        <a href="#keunggulan" class="inline-flex flex-col items-center text-xs text-orange-200/70 hover:text-white tab-transition">
+          <span class="text-xs tracking-widest uppercase">Scroll ke Bawah</span>
+          <span class="text-lg animate-bounce mt-1">↓</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 3. KEUNGGULAN SECTION (3-Column Desktop Grid like MasJanis grid-3)        -->
+  <!-- ========================================================================= -->
+  <section id="keunggulan" class="py-16 bg-white border-b border-[#e2e8f0]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12 space-y-2">
+        <span class="text-xs font-bold uppercase tracking-wider text-orange-600 bg-orange-50 px-3 py-1 rounded-full border border-orange-200/60">
+          Keunggulan Kami
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-[#0f172a]">
+          Mengapa Memilih Pendekatan Diet Kanidee?
+        </h2>
+        <p class="text-xs sm:text-sm text-[#64748b]">
+          Dirancang untuk Anda yang ingin menurunkan berat badan tanpa tersiksa rasa lapar atau menghabiskan jutaan rupiah untuk suplemen kimia.
+        </p>
+      </div>
+
+      <!-- Grid 3 Cards (MasJanis Style) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+        <!-- Feature 1 -->
+        <div class="bg-[#f8fafc] border-2 border-[#e2e8f0] hover:border-orange-300 rounded-2xl p-6 knd-shadow knd-shadow-hover tab-transition flex flex-col justify-between h-full">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-orange-100 text-orange-600 text-2xl flex items-center justify-center font-bold mb-3">
+              🥘
+            </div>
+            <h3 class="text-base font-extrabold text-[#0f172a] mb-2 min-h-[28px] flex items-center">
+              Resep Ramah Pasar Lokal
+            </h3>
+            <p class="text-xs text-[#64748b] leading-relaxed">
+              Semua bahan masakan dalam resep mudah dibeli di pasar tradisional terdekat. Tidak perlu mencari bahan impor yang mahal atau sulit ditemukan.
+            </p>
+          </div>
+          <div class="pt-3 mt-4 border-t border-slate-200/70 text-xs font-bold text-orange-600 flex items-center gap-1.5">
+            <span class="w-4 h-4 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center text-[10px]">✓</span>
+            <span>100% Bahan Alami Nusantara</span>
+          </div>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="bg-[#f8fafc] border-2 border-[#e2e8f0] hover:border-orange-300 rounded-2xl p-6 knd-shadow knd-shadow-hover tab-transition flex flex-col justify-between h-full">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-orange-100 text-orange-600 text-2xl flex items-center justify-center font-bold mb-3">
+              🔬
+            </div>
+            <h3 class="text-base font-extrabold text-[#0f172a] mb-2 min-h-[28px] flex items-center">
+              Berbasis Bukti Ilmiah
+            </h3>
+            <p class="text-xs text-[#64748b] leading-relaxed">
+              Bukan diet ekstrem yang memangkas asupan tanpa dasar. Mengatur defisit kalori dengan kecukupan mikronutrisi sehingga tubuh tetap bugar dan bebas lemas.
+            </p>
+          </div>
+          <div class="pt-3 mt-4 border-t border-slate-200/70 text-xs font-bold text-orange-600 flex items-center gap-1.5">
+            <span class="w-4 h-4 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center text-[10px]">✓</span>
+            <span>Metode Teruji & Bebas Lemas</span>
+          </div>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="bg-[#f8fafc] border-2 border-[#e2e8f0] hover:border-orange-300 rounded-2xl p-6 knd-shadow knd-shadow-hover tab-transition flex flex-col justify-between h-full">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-orange-100 text-orange-600 text-2xl flex items-center justify-center font-bold mb-3">
+              ⚡
+            </div>
+            <h3 class="text-base font-extrabold text-[#0f172a] mb-2 min-h-[28px] flex items-center">
+              Akses Instan & Permanen
+            </h3>
+            <p class="text-xs text-[#64748b] leading-relaxed">
+              Pembayaran QRIS divalidasi otomatis hitungan detik via Midtrans. Berkas e-book PDF berlisensi resmi langsung dapat diunduh tanpa jeda admin.
+            </p>
+          </div>
+          <div class="pt-3 mt-4 border-t border-slate-200/70 text-xs font-bold text-orange-600 flex items-center gap-1.5">
+            <span class="w-4 h-4 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center text-[10px]">✓</span>
+            <span>Unduh Otomatis 24/7</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 4. PROGRAM & PRODUK UNGGULAN (Full Desktop Grid like MasJanis Shop)      -->
+  <!-- ========================================================================= -->
+  <section id="program" class="py-16 md:py-20 bg-slate-50 border-b border-[#e2e8f0]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-orange-600 bg-orange-100 px-3 py-1 rounded-full border border-orange-200">
+            Katalog Program Pilihan
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-[#0f172a] mt-2">
+            Pilihan Terbaik untuk Pola Hidup Sehat Anda
+          </h2>
+          <p class="text-xs sm:text-sm text-[#64748b] mt-1">
+            Produk edukasi digital dan formula pendamping yang paling diminati pelanggan Kanidee.
+          </p>
+        </div>
+        <div class="flex items-center gap-2 text-xs font-semibold text-[#64748b]">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+          <span>Semua Berkas Siap Diunduh Instan</span>
+        </div>
+      </div>
+
+      <!-- 3-Column Responsive Product Grid (Expanded on Desktop) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+
+        <!-- Product 1: E-Book Resep Sehat TCM (Asli Kanidee Lab) -->
+        <div class="bg-white border-2 border-[#e2e8f0] hover:border-orange-300 rounded-2xl pt-6 px-6 pb-6 knd-shadow knd-shadow-hover tab-transition flex flex-col justify-between h-full">
+          <div>
+            <div class="h-8 flex items-center justify-between pb-3 border-b border-slate-100">
+              <span class="text-xs font-bold text-orange-800 bg-orange-100 px-2.5 py-0.5 rounded-md whitespace-nowrap">
+                E-Book Medis Timur
+              </span>
+              <span class="text-xs font-bold text-[#64748b] bg-slate-100 px-2.5 py-0.5 rounded-md whitespace-nowrap">
+                PDF 4.0 MB (25 Hal)
+              </span>
+            </div>
+
+            <div class="my-3">
+              <div class="w-full h-44 rounded-xl overflow-hidden bg-slate-100 border border-slate-200 mb-3 shadow-inner">
+                <img src="assets/img/tcm-ebook-cover.png" alt="E-Book TCM Kanidee Lab" class="w-full h-full object-cover hover:scale-105 tab-transition">
+              </div>
+              <h3 class="text-base font-extrabold text-[#0f172a] h-12 flex items-center leading-snug">
+                Resep Sehat Traditional Chinese Medicine (TCM)
+              </h3>
+              <p class="text-xs text-[#64748b] leading-relaxed mt-1 h-[56px] flex items-start line-clamp-3">
+                Resep makanan obat halal untuk mengatasi sindrom Qi Xu, Stasis Darah, dan dahak dingin dengan bahan ramah pasar lokal.
+              </p>
+            </div>
+
+            <div class="py-3 border-t border-slate-100 flex items-baseline justify-between">
+              <div>
+                <span class="text-xs text-slate-400 line-through block">Rp 149.000</span>
+                <span class="text-xl font-black text-[#ea580c]">Rp 99.000</span>
+              </div>
+              <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded whitespace-nowrap">Hemat 33%</span>
+            </div>
+          </div>
+
+          <button onclick="openCheckoutFor('resep-tcm')" class="w-full mt-4 h-11 bg-[#ea580c] hover:bg-[#c2410c] active:scale-[0.98] text-white text-xs font-bold rounded-xl shadow-md tab-transition flex items-center justify-center gap-2 cursor-pointer">
+            <span>Beli Sekarang</span>
+            <span class="text-orange-200">→</span>
+          </button>
+        </div>
+
+        <!-- Product 2: Keripik Gadung Sehat Kanidee (FEATURED / POPULER) -->
+        <div class="bg-gradient-to-b from-white to-orange-50/40 border-2 border-[#ea580c] rounded-2xl pt-6 px-6 pb-6 knd-shadow knd-shadow-hover tab-transition flex flex-col justify-between h-full relative">
+          <!-- Top Popular Badge -->
+          <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#0f172a] text-amber-400 text-[11px] font-black px-4 py-1 rounded-full shadow-md whitespace-nowrap tracking-wide flex items-center gap-1.5 border border-slate-700 pointer-events-none z-10">
+            <span>⭐</span> CAMILAN SEHAT FAVORIT
+          </div>
+
+          <div>
+            <div class="h-8 flex items-center justify-between pb-3 border-b border-orange-200/80">
+              <span class="text-xs font-bold text-orange-900 bg-orange-200 px-2.5 py-0.5 rounded-md whitespace-nowrap">
+                100% Umbi Alami
+              </span>
+              <span class="text-xs font-bold text-[#ea580c] bg-orange-50 px-2.5 py-0.5 rounded-md whitespace-nowrap border border-orange-200/60">
+                Tanpa Pengawet &amp; MSG
+              </span>
+            </div>
+
+            <div class="my-3">
+              <div class="w-full h-44 rounded-xl overflow-hidden bg-amber-50 border border-orange-200/60 mb-3 shadow-inner">
+                <img src="assets/products/keripik-gadung.jpg" alt="Keripik Gadung Kanidee" class="w-full h-full object-cover hover:scale-105 tab-transition">
+              </div>
+              <h3 class="text-base font-extrabold text-[#0f172a] h-12 flex items-center leading-snug">
+                Keripik Gadung Sehat Kanidee (40g)
+              </h3>
+              <p class="text-xs text-[#64748b] leading-relaxed mt-1 h-[56px] flex items-start line-clamp-3">
+                Camilan sehat renyah gurih nagih dari umbi gadung pilihan diolah higienis bebas racun alami, bebas pengawet, cocok untuk diet.
+              </p>
+            </div>
+
+            <div class="py-3 border-t border-orange-200/80 flex items-baseline justify-between">
+              <div>
+                <span class="text-xs text-slate-400 line-through block">Rp 35.000</span>
+                <span class="text-xl font-black text-[#ea580c]">Rp 25.000</span>
+              </div>
+              <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded whitespace-nowrap">Hemat 28%</span>
+            </div>
+          </div>
+
+          <button onclick="openCheckoutFor('keripik-gadung')" class="w-full mt-4 h-11 bg-[#ea580c] hover:bg-[#c2410c] active:scale-[0.98] text-white text-xs font-bold rounded-xl shadow-md tab-transition flex items-center justify-center gap-2 cursor-pointer">
+            <span>Beli Sekarang</span>
+            <span class="text-orange-200">→</span>
+          </button>
+        </div>
+
+        <!-- Product 3: Kanirol Frozen Bento -->
+        <div class="bg-white border-2 border-[#e2e8f0] hover:border-orange-300 rounded-2xl pt-6 px-6 pb-6 knd-shadow knd-shadow-hover tab-transition flex flex-col justify-between h-full">
+          <div>
+            <div class="h-8 flex items-center justify-between pb-3 border-b border-slate-100">
+              <span class="text-xs font-bold text-red-800 bg-red-100 px-2.5 py-0.5 rounded-md whitespace-nowrap">
+                Frozen Bento Sehat
+              </span>
+              <span class="text-xs font-bold text-red-800 bg-red-50 px-2.5 py-0.5 rounded-md whitespace-nowrap border border-red-200/60">
+                Beku -18°C
+              </span>
+            </div>
+
+            <div class="my-3">
+              <div class="w-full h-44 rounded-xl overflow-hidden bg-red-50 border border-red-200/60 mb-3 shadow-inner">
+                <img src="assets/products/kanirol.jpg" alt="Kanirol Kanidee Bento" class="w-full h-full object-cover hover:scale-105 tab-transition">
+              </div>
+              <h3 class="text-base font-extrabold text-[#0f172a] h-12 flex items-center leading-snug">
+                Kanirol (Kekian Ayam &amp; Rajungan)
+              </h3>
+              <p class="text-xs text-[#64748b] leading-relaxed mt-1 h-[56px] flex items-start line-clamp-3">
+                Olahan ayam dan rajungan pilihan kaya protein hewani tanpa pengawet berbahaya. Kenyal gurih nagih, praktis siap goreng keemasan.
+              </p>
+            </div>
+
+            <div class="py-3 border-t border-slate-100 flex items-baseline justify-between">
+              <div>
+                <span class="text-xs text-slate-400 line-through block">Rp 60.000</span>
+                <span class="text-xl font-black text-[#ea580c]">Rp 45.000</span>
+              </div>
+              <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded whitespace-nowrap">Hemat 25%</span>
+            </div>
+          </div>
+
+          <button onclick="openCheckoutFor('kanirol')" class="w-full mt-4 h-11 bg-[#ea580c] hover:bg-[#c2410c] active:scale-[0.98] text-white text-xs font-bold rounded-xl shadow-md tab-transition flex items-center justify-center gap-2 cursor-pointer">
+            <span>Beli Sekarang</span>
+            <span class="text-orange-200">→</span>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Secondary Shelf: Lini Lengkap Frozen Bento Sehat Kanidee F&B -->
+      <div class="mt-14 pt-12 border-t border-slate-200">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-orange-600 bg-orange-100 px-3 py-1 rounded-full border border-orange-200">
+              Kanidee F&amp;B Frozen Series
+            </span>
+            <h3 class="text-xl font-extrabold text-[#0f172a] mt-2">
+              Varian Frozen Bento Sehat Tanpa Bahan Pengawet
+            </h3>
+            <p class="text-xs text-[#64748b]">Praktis disimpan beku, siap goreng kapan saja untuk sarapan keluarga dan bekal bento anak.</p>
+          </div>
+          <span class="self-start sm:self-auto text-xs font-semibold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200 whitespace-nowrap">
+            ✓ 100% Halal &amp; Higienis
+          </span>
+        </div>
+
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <!-- Item 1: Egg Chicken Roll -->
+          <div class="bg-white border border-slate-200 rounded-xl p-3.5 knd-shadow hover:border-orange-300 tab-transition flex flex-col justify-between">
+            <div>
+              <div class="h-36 rounded-lg overflow-hidden bg-slate-100 mb-2.5">
+                <img src="assets/products/egg-chicken-roll.jpg" alt="Egg Chicken Roll Kanidee" class="w-full h-full object-cover hover:scale-105 tab-transition">
+              </div>
+              <span class="text-[10px] font-bold text-orange-800 bg-orange-100 px-2 py-0.5 rounded">Daging Olahan</span>
+              <h4 class="text-xs font-bold text-[#0f172a] mt-1.5 leading-snug">Egg Chicken Roll</h4>
+              <p class="text-[11px] text-slate-500 line-clamp-2 mt-1">Ayam olahan dibalut telur lembut gurih bernutrisi.</p>
+            </div>
+            <div class="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between">
+              <div>
+                <span class="text-[10px] text-slate-400 line-through block">Rp 55.000</span>
+                <span class="text-xs font-extrabold text-[#ea580c]">Rp 42.000</span>
+              </div>
+              <button onclick="openCheckoutFor('egg-chicken-roll')" class="px-2.5 py-1 bg-[#ea580c] hover:bg-[#c2410c] text-white text-[11px] font-bold rounded-lg cursor-pointer">Beli</button>
+            </div>
+          </div>
+
+          <!-- Item 2: Shrimp Roll -->
+          <div class="bg-white border border-slate-200 rounded-xl p-3.5 knd-shadow hover:border-orange-300 tab-transition flex flex-col justify-between">
+            <div>
+              <div class="h-36 rounded-lg overflow-hidden bg-slate-100 mb-2.5">
+                <img src="assets/products/shrimp-roll.jpg" alt="Shrimp Roll Kanidee" class="w-full h-full object-cover hover:scale-105 tab-transition">
+              </div>
+              <span class="text-[10px] font-bold text-orange-800 bg-orange-100 px-2 py-0.5 rounded">Ayam &amp; Udang</span>
+              <h4 class="text-xs font-bold text-[#0f172a] mt-1.5 leading-snug">Shrimp Roll Bento</h4>
+              <p class="text-[11px] text-slate-500 line-clamp-2 mt-1">Daging ayam dengan potongan udang pilihan renyah.</p>
+            </div>
+            <div class="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between">
+              <div>
+                <span class="text-[10px] text-slate-400 line-through block">Rp 60.000</span>
+                <span class="text-xs font-extrabold text-[#ea580c]">Rp 45.000</span>
+              </div>
+              <button onclick="openCheckoutFor('shrimp-roll')" class="px-2.5 py-1 bg-[#ea580c] hover:bg-[#c2410c] text-white text-[11px] font-bold rounded-lg cursor-pointer">Beli</button>
+            </div>
+          </div>
+
+          <!-- Item 3: Ekado -->
+          <div class="bg-white border border-slate-200 rounded-xl p-3.5 knd-shadow hover:border-orange-300 tab-transition flex flex-col justify-between">
+            <div>
+              <div class="h-36 rounded-lg overflow-hidden bg-slate-100 mb-2.5">
+                <img src="assets/products/ekado.jpg" alt="Ekado Kanidee" class="w-full h-full object-cover hover:scale-105 tab-transition">
+              </div>
+              <span class="text-[10px] font-bold text-orange-800 bg-orange-100 px-2 py-0.5 rounded">Kembang Tahu</span>
+              <h4 class="text-xs font-bold text-[#0f172a] mt-1.5 leading-snug">Ekado Ayam Bento</h4>
+              <p class="text-[11px] text-slate-500 line-clamp-2 mt-1">Kekian ayam dibalut kulit tahu kriuk renyah gurih.</p>
+            </div>
+            <div class="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between">
+              <div>
+                <span class="text-[10px] text-slate-400 line-through block">Rp 60.000</span>
+                <span class="text-xs font-extrabold text-[#ea580c]">Rp 45.000</span>
+              </div>
+              <button onclick="openCheckoutFor('ekado')" class="px-2.5 py-1 bg-[#ea580c] hover:bg-[#c2410c] text-white text-[11px] font-bold rounded-lg cursor-pointer">Beli</button>
+            </div>
+          </div>
+
+          <!-- Item 4: Spicy Chicken -->
+          <div class="bg-white border border-slate-200 rounded-xl p-3.5 knd-shadow hover:border-orange-300 tab-transition flex flex-col justify-between">
+            <div>
+              <div class="h-36 rounded-lg overflow-hidden bg-slate-100 mb-2.5">
+                <img src="assets/products/spicy-chicken.jpg" alt="Spicy Chicken Kanidee" class="w-full h-full object-cover hover:scale-105 tab-transition">
+              </div>
+              <span class="text-[10px] font-bold text-red-800 bg-red-100 px-2 py-0.5 rounded">Pedas Gurih</span>
+              <h4 class="text-xs font-bold text-[#0f172a] mt-1.5 leading-snug">Spicy Chicken Nugget</h4>
+              <p class="text-[11px] text-slate-500 line-clamp-2 mt-1">Nugget ayam rasa pedas menggugah selera keluarga.</p>
+            </div>
+            <div class="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between">
+              <div>
+                <span class="text-[10px] text-slate-400 line-through block">Rp 50.000</span>
+                <span class="text-xs font-extrabold text-[#ea580c]">Rp 40.000</span>
+              </div>
+              <button onclick="openCheckoutFor('spicy-chicken')" class="px-2.5 py-1 bg-[#ea580c] hover:bg-[#c2410c] text-white text-[11px] font-bold rounded-lg cursor-pointer">Beli</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 5. TENTANG KAMI / COACH SECTION (2-Column About Grid like MasJanis)       -->
+  <!-- ========================================================================= -->
+  <section id="tentang" class="py-16 md:py-20 bg-white border-b border-[#e2e8f0]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <!-- Left: Authority Visual Card (5 Cols) -->
+        <div class="lg:col-span-5 bg-gradient-to-br from-[#0f172a] to-[#1e293b] text-white rounded-3xl p-8 space-y-6 relative overflow-hidden shadow-xl">
+          <div class="w-20 h-20 rounded-2xl bg-gradient-to-tr from-[#ea580c] to-[#f97316] text-white text-3xl font-black flex items-center justify-center shadow-lg">
+            KD
+          </div>
+          <div>
+            <h3 class="text-xl font-extrabold text-white">Tim Formulator Kanidee</h3>
+            <span class="text-xs text-orange-400 font-semibold block mt-0.5">Praktisi Nutrisi & Coach Diet Paripurna</span>
+          </div>
+          <div class="space-y-3 text-xs text-slate-300 pt-3 border-t border-slate-700/80">
+            <div class="flex items-center gap-2">
+              <span class="text-orange-400 font-bold">✓</span>
+              <span>1.200+ Klien Terbantu Menurunkan Berat Badan</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-orange-400 font-bold">✓</span>
+              <span>Pendekatan Berbasis Bukti Ilmiah Gizi</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-orange-400 font-bold">✓</span>
+              <span>100% Mengutamakan Pangan Alami Indonesia</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Editorial Content (7 Cols) -->
+        <div class="lg:col-span-7 space-y-4">
+          <span class="text-xs font-bold uppercase tracking-wider text-orange-600 bg-orange-50 px-3 py-1 rounded-full border border-orange-200">
+            Otoritas & Metodologi
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-[#0f172a]">
+            Diet Bukan Tentang Kelaparan, Tapi Memahami Takaran Tubuh Anda
+          </h2>
+          <p class="text-xs sm:text-sm text-[#64748b] leading-relaxed">
+            Banyak orang gagal menjaga berat badan ideal karena terjebak pada mitos pantangan ekstrem. Di Kanidee, kami percaya bahwa kesehatan optimal adalah hasil dari kebiasaan pola makan yang berkelanjutan dan membumi.
+          </p>
+          <p class="text-xs sm:text-sm text-[#64748b] leading-relaxed">
+            Kami menyusun panduan ini berdasarkan adaptasi kuliner Nusantara—memanfaatkan tempe, tahu, ikan lokal, sayur pasar, dan rempah alami—sehingga Anda tidak merasa terasing dari masakan keluarga sendiri.
+          </p>
+          <div class="pt-2">
+            <a href="https://wa.me/6281234567890" target="_blank" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#0f172a] hover:bg-[#1e293b] text-white text-xs font-bold shadow tab-transition">
+              <span>💬</span>
+              <span>Konsultasi Langsung via WhatsApp</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 6. ARTIKEL GIZI SECTION (Cards Grid like MasJanis Teori)                 -->
+  <!-- ========================================================================= -->
+  <section id="artikel" class="py-16 md:py-20 bg-slate-50 border-b border-[#e2e8f0]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12 space-y-2">
+        <span class="text-xs font-bold uppercase tracking-wider text-orange-600 bg-orange-100 px-3 py-1 rounded-full border border-orange-200">
+          Edukasi & Wawasan
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-[#0f172a]">
+          Artikel & Panduan Pola Makan Terkini
+        </h2>
+        <p class="text-xs sm:text-sm text-[#64748b]">
+          Pelajari konsep gizi praktis untuk mendukung perjalanan penurunan berat badan Anda.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+        <!-- Article 1 -->
+        <article class="bg-white border-2 border-[#e2e8f0] rounded-2xl p-6 knd-shadow hover:border-orange-300 tab-transition flex flex-col justify-between h-full">
+          <div>
+            <div class="flex items-center gap-2 text-xs text-[#64748b] pb-2">
+              <span class="text-xs font-bold bg-orange-100 text-orange-900 px-2 py-0.5 rounded">Pola Makan</span>
+              <span>•</span>
+              <span>4 Menit Baca</span>
+            </div>
+            <h3 class="text-sm font-extrabold text-[#0f172a] h-12 flex items-center leading-snug">
+              Rahasia Defisit Kalori Tanpa Lemas dan Kelaparan Ekstrem
+            </h3>
+            <p class="text-xs text-[#64748b] leading-relaxed mt-2 min-h-[50px] line-clamp-3">
+              Kunci utama diet jangka panjang adalah mencukupi mikronutrisi nabati lokal yang memperlambat pengosongan lambung secara alami tanpa rasa lemas berlebih.
+            </p>
+          </div>
+          <button onclick="openCheckoutFor('menu-diet')" class="mt-4 pt-3 border-t border-slate-100 text-xs font-bold text-orange-600 hover:text-orange-700 flex items-center justify-between w-full cursor-pointer">
+            <span>Dapatkan Panduan di E-Book</span>
+            <span>→</span>
+          </button>
+        </article>
+
+        <!-- Article 2 -->
+        <article class="bg-white border-2 border-[#e2e8f0] rounded-2xl p-6 knd-shadow hover:border-orange-300 tab-transition flex flex-col justify-between h-full">
+          <div>
+            <div class="flex items-center gap-2 text-xs text-[#64748b] pb-2">
+              <span class="text-xs font-bold bg-indigo-100 text-indigo-900 px-2 py-0.5 rounded">Edukasi Gizi</span>
+              <span>•</span>
+              <span>5 Menit Baca</span>
+            </div>
+            <h3 class="text-sm font-extrabold text-[#0f172a] h-12 flex items-center leading-snug">
+              5 Kesalahan Fatal Memangkas Karbohidrat pada Pemula
+            </h3>
+            <p class="text-xs text-[#64748b] leading-relaxed mt-2 min-h-[50px] line-clamp-3">
+              Membuang karbohidrat sepenuhnya justru menurunkan laju metabolisme basal dan memicu rasa lapar berulang di akhir pekan jika tidak diimbangi asupan serat cukup.
+            </p>
+          </div>
+          <button onclick="openCheckoutFor('menu-sehat')" class="mt-4 pt-3 border-t border-slate-100 text-xs font-bold text-orange-600 hover:text-orange-700 flex items-center justify-between w-full cursor-pointer">
+            <span>Pelajari Kurikulum Lengkap</span>
+            <span>→</span>
+          </button>
+        </article>
+
+        <!-- Article 3 -->
+        <article class="bg-white border-2 border-[#e2e8f0] rounded-2xl p-6 knd-shadow hover:border-orange-300 tab-transition flex flex-col justify-between h-full">
+          <div>
+            <div class="flex items-center gap-2 text-xs text-[#64748b] pb-2">
+              <span class="text-xs font-bold bg-amber-100 text-amber-900 px-2 py-0.5 rounded">Panduan Praktis</span>
+              <span>•</span>
+              <span>3 Menit Baca</span>
+            </div>
+            <h3 class="text-sm font-extrabold text-[#0f172a] h-12 flex items-center leading-snug">
+              Cara Menakar Porsi Sayur dan Protein Tanpa Timbangan Digital
+            </h3>
+            <p class="text-xs text-[#64748b] leading-relaxed mt-2 min-h-[50px] line-clamp-3">
+              Gunakan aturan telapak tangan dan pembagian zona piring 2:1:1 untuk takaran akurat di mana pun Anda makan bersama keluarga tanpa repot menimbang.
+            </p>
+          </div>
+          <button onclick="openCheckoutFor('maduka')" class="mt-4 pt-3 border-t border-slate-100 text-xs font-bold text-orange-600 hover:text-orange-700 flex items-center justify-between w-full cursor-pointer">
+            <span>Lihat Formula Pendamping</span>
+            <span>→</span>
+          </button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 7. DOWNLOAD CENTER (Self-Service Fulfillment like MasJanis Download)     -->
+  <!-- ========================================================================= -->
+  <section id="download" class="py-16 md:py-20 bg-white border-b border-[#e2e8f0]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-xl mx-auto mb-10 space-y-2">
+        <span class="text-xs font-bold uppercase tracking-wider text-orange-600 bg-orange-50 px-3 py-1 rounded-full border border-orange-200">
+          Download Center
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-[#0f172a]">
+          Unduh Berkas Pesanan Digital Anda
+        </h2>
+        <p class="text-xs sm:text-sm text-[#64748b]">
+          Masukkan nomor invoice dan WhatsApp untuk membuka tautan unduh berlisensi resmi.
+        </p>
+      </div>
+
+      <div class="bg-[#f8fafc] border border-[#e2e8f0] rounded-2xl p-6 sm:p-8 knd-shadow space-y-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="order-lookup-id" class="block text-xs font-bold text-[#0f172a] mb-1">Nomor Pesanan / Invoice</label>
+            <input type="text" id="order-lookup-id" value="KND-20261029-4821" class="w-full text-xs px-3.5 py-2.5 bg-white border border-[#e2e8f0] rounded-xl font-mono text-[#0f172a] focus:outline-none focus:border-[#ea580c]">
+          </div>
+          <div>
+            <label for="order-lookup-phone" class="block text-xs font-bold text-[#0f172a] mb-1">Nomor WhatsApp Aktif</label>
+            <input type="tel" id="order-lookup-phone" value="081234567890" class="w-full text-xs px-3.5 py-2.5 bg-white border border-[#e2e8f0] rounded-xl text-[#0f172a] focus:outline-none focus:border-[#ea580c]">
+          </div>
+        </div>
+
+        <button onclick="verifyDownloadOrder()" class="w-full py-3 bg-[#0f172a] hover:bg-[#1e293b] text-white text-xs font-bold rounded-xl shadow tab-transition">
+          Verifikasi & Buka Berkas Unduhan
+        </button>
+
+        <!-- Result Box (Hidden Until Verified or Payment Settled) -->
+        <div id="download-result-box" class="hidden bg-orange-50/70 border border-orange-200 rounded-xl p-4 space-y-3">
+          <div class="flex justify-between items-center text-xs">
+            <span class="font-bold text-orange-900 bg-orange-200 px-2.5 py-0.5 rounded">STATUS: LUNAS (PAID)</span>
+            <span class="font-bold text-[#0f172a]">Masa Aktif: 71 Jam Tersisa</span>
+          </div>
+          
+          <div class="bg-white border border-orange-200 rounded-xl p-3.5 flex items-center justify-between gap-3 shadow-sm">
+            <div class="flex items-center gap-3 min-w-0">
+              <span class="text-3xl">📄</span>
+              <div class="min-w-0">
+                <h4 id="download-file-title" class="text-xs font-bold text-[#0f172a] truncate">RESEP SEHAT TRADITIONAL CHINESE MEDICINE.pdf</h4>
+                <span id="download-file-meta" class="text-xs text-[#64748b] block truncate">4.0 MB • Lisensi Resmi: Adam Kurniawan (081234567890)</span>
+              </div>
+            </div>
+            <button onclick="triggerFileDownload()" class="px-4 py-2 bg-[#ea580c] hover:bg-[#c2410c] text-white text-xs font-bold rounded-lg shrink-0 flex items-center gap-1.5 shadow tab-transition cursor-pointer">
+              <span>⬇️</span> Unduh PDF
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 8. TESTIMONIALS (3-Column Grid like MasJanis Testimonials)               -->
+  <!-- ========================================================================= -->
+  <section id="testimoni" class="py-16 bg-slate-50 border-b border-[#e2e8f0]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-xl mx-auto mb-12 space-y-2">
+        <span class="text-xs font-bold uppercase tracking-wider text-orange-600 bg-orange-100 px-3 py-1 rounded-full border border-orange-200">
+          Testimoni Pembeli
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-[#0f172a]">
+          Apa Kata Mereka yang Telah Merasakan Hasilnya
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+        <!-- Review 1 -->
+        <div class="bg-white border-2 border-[#e2e8f0] rounded-2xl p-6 knd-shadow flex flex-col justify-between h-full space-y-3">
+          <div class="space-y-2">
+            <div class="text-amber-500 text-xs">★★★★★</div>
+            <p class="text-xs text-[#0f172a] italic leading-relaxed min-h-[56px]">
+              "Resepnya sangat membumi dan gampang dicari di pasar tradisional. Dalam 3 minggu berat badan turun 4 kg tanpa rasa pusing atau lemas!"
+            </p>
+          </div>
+          <div class="pt-3 border-t border-slate-100 flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-orange-100 text-orange-700 font-bold text-xs flex items-center justify-center shrink-0">
+              RM
+            </div>
+            <div>
+              <span class="text-xs font-bold text-[#0f172a] block">Ibu Rina Marlina</span>
+              <span class="text-xs text-[#64748b]">Bandung • Turun 4 kg</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="bg-white border-2 border-[#e2e8f0] rounded-2xl p-6 knd-shadow flex flex-col justify-between h-full space-y-3">
+          <div class="space-y-2">
+            <div class="text-amber-500 text-xs">★★★★★</div>
+            <p class="text-xs text-[#0f172a] italic leading-relaxed min-h-[56px]">
+              "Pelatihan menu sehatnya membuka mata saya bahwa diet tidak harus serba rebusan hambar. Masih bisa makan enak bersama keluarga."
+            </p>
+          </div>
+          <div class="pt-3 border-t border-slate-100 flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-orange-100 text-orange-700 font-bold text-xs flex items-center justify-center shrink-0">
+              HG
+            </div>
+            <div>
+              <span class="text-xs font-bold text-[#0f172a] block">Bpk. Hendra Gunawan</span>
+              <span class="text-xs text-[#64748b]">Surabaya • Turun 6.5 kg</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="bg-white border-2 border-[#e2e8f0] rounded-2xl p-6 knd-shadow flex flex-col justify-between h-full space-y-3">
+          <div class="space-y-2">
+            <div class="text-amber-500 text-xs">★★★★★</div>
+            <p class="text-xs text-[#0f172a] italic leading-relaxed min-h-[56px]">
+              "Sistem download-nya otomatis dan sangat praktis. Begitu bayar via QRIS, e-book langsung terbuka lengkap dengan watermark lisensi saya."
+            </p>
+          </div>
+          <div class="pt-3 border-t border-slate-100 flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-orange-100 text-orange-700 font-bold text-xs flex items-center justify-center shrink-0">
+              SA
+            </div>
+            <div>
+              <span class="text-xs font-bold text-[#0f172a] block">drg. Silvia Andini</span>
+              <span class="text-xs text-[#64748b]">Jakarta Selatan • Praktisi Kesehatan</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 9. CTA BANNER & VISITOR STATS (like MasJanis CTA Banner)                  -->
+  <!-- ========================================================================= -->
+  <section class="py-16 bg-gradient-to-r from-[#0f172a] via-[#1e293b] to-[#c2410c] text-white text-center">
+    <div class="max-w-3xl mx-auto px-4 space-y-5">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white">
+        Mulai Perjalanan Hidup Sehat Anda Hari Ini
+      </h2>
+      <p class="text-xs sm:text-sm text-orange-100/90 leading-relaxed">
+        Bergabunglah bersama ribuan orang yang telah membuktikan bahwa diet seimbang dapat dinikmati setiap hari tanpa rasa tersiksa.
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
+        <a href="#program" class="px-6 py-3 rounded-xl bg-[#ea580c] hover:bg-[#c2410c] text-white font-extrabold text-xs shadow-lg tab-transition">
+          🛒 Pilih Program Diet
+        </a>
+        <a href="https://wa.me/6281234567890" target="_blank" class="px-6 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs border border-white/20 tab-transition">
+          💬 Tanya Trainer via WhatsApp
+        </a>
+      </div>
+
+      <!-- Live Visitor Counter (MasJanis Style) -->
+      <div class="pt-8 flex flex-col items-center gap-2">
+        <span class="text-xs text-orange-200/80 font-medium">👁 Total Pengunjung Web Resmi</span>
+        <div class="inline-flex items-center gap-1 bg-black/30 border border-white/10 px-3.5 py-1.5 rounded-lg font-mono font-bold text-sm tracking-widest text-amber-300">
+          <span>0</span><span>1</span><span>4</span><span>2</span><span>0</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 10. FOOTER (Complete Desktop Multi-Column Footer like MasJanis)           -->
+  <!-- ========================================================================= -->
+  <footer class="bg-[#0f172a] text-slate-400 py-12 border-t border-slate-800 text-xs">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-8 border-b border-slate-800">
+        <!-- Col 1: Brand -->
+        <div class="space-y-3">
+          <div class="flex items-center gap-2.5">
+            <img src="assets/img/kanidee-lab-icon.svg" alt="Kanidee Lab" class="w-8 h-8 object-contain">
+            <span class="font-extrabold text-sm text-white tracking-tight">KANIDEE LAB</span>
+          </div>
+          <p class="text-xs leading-relaxed text-slate-400">
+            Platform edukasi gizi dan panduan diet paripurna berbasis kearifan kuliner lokal Indonesia.
+          </p>
+        </div>
+
+        <!-- Col 2: Navigasi Cepat -->
+        <div class="space-y-2">
+          <span class="font-bold text-white block uppercase tracking-wider text-xs">Menu Navigasi</span>
+          <ul class="space-y-1.5">
+            <li><a href="#hero" class="hover:text-white tab-transition">Beranda</a></li>
+            <li><a href="#program" class="hover:text-white tab-transition">Katalog E-Book</a></li>
+            <li><a href="#tentang" class="hover:text-white tab-transition">Profil Trainer</a></li>
+            <li><a href="#artikel" class="hover:text-white tab-transition">Artikel Gizi</a></li>
+            <li><a href="#download" class="hover:text-white tab-transition">Download Center</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Keamanan & Pembayaran -->
+        <div class="space-y-2">
+          <span class="font-bold text-white block uppercase tracking-wider text-xs">Jalur Pembayaran Resmi</span>
+          <div class="flex flex-wrap gap-1.5 pt-1">
+            <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-semibold">QRIS</span>
+            <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-semibold">BCA VA</span>
+            <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-semibold">Mandiri VA</span>
+            <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-semibold">GoPay</span>
+            <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-semibold">OVO</span>
+          </div>
+          <p class="text-xs text-slate-500 pt-2">
+            Terhubung otomatis dengan Midtrans API Gateway (Enkripsi SSL 256-bit).
+          </p>
+        </div>
+
+        <!-- Col 4: Backoffice Link -->
+        <div class="space-y-2">
+          <span class="font-bold text-white block uppercase tracking-wider text-xs">Akses Khusus Pengelola</span>
+          <p class="text-xs text-slate-400">Panel admin terpisah untuk manajemen katalog dan rekonsiliasi omzet.</p>
+          <a href="kanidee_cms_mockup.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs tab-transition">
+            <span>⚙️</span>
+            <span>Masuk ke CMS Admin ↗</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-2">
+        <span>© 2026 Kanidee Platform. Hak Cipta Dilindungi Undang-Undang.</span>
+        <span>Enkripsi SSL 256-Bit • Jalur Resmi Midtrans</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================= -->
+  <!-- 11. CHECKOUT MODAL DRAWER (Integrated Instant Ordering Experience)        -->
+  <!-- ========================================================================= -->
+  <div id="checkout-modal" onclick="if(event.target === this) closeCheckoutModal()" class="hidden fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl w-full max-w-md p-6 space-y-4 shadow-2xl border border-slate-200 max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between pb-3 border-b border-[#e2e8f0]">
+        <div>
+          <span class="text-xs font-bold text-orange-600 uppercase tracking-wider">Direct Checkout</span>
+          <h3 class="text-base font-extrabold text-[#0f172a]">Formulir Pembelian Instan</h3>
+        </div>
+        <button onclick="closeCheckoutModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold text-xs flex items-center justify-center cursor-pointer tab-transition">✕</button>
+      </div>
+
+      <!-- Selected Product Box -->
+      <div class="bg-[#f8fafc] border border-[#e2e8f0] rounded-xl p-3.5 flex items-center gap-3">
+        <div id="modal-product-icon" class="w-12 h-12 rounded-xl bg-orange-100 text-2xl flex items-center justify-center shrink-0">
+          🥗
+        </div>
+        <div class="flex-1 min-w-0">
+          <h4 id="modal-product-title" class="text-xs font-bold text-[#0f172a] truncate">Pelatihan Menu Sehat Paripurna</h4>
+          <span class="text-xs text-orange-700">Akses Unduh Langsung 72 Jam</span>
+          <div class="text-xs font-black text-[#ea580c] mt-0.5">Rp <span id="modal-product-price">199.000</span></div>
+        </div>
+      </div>
+
+      <!-- Customer Inputs -->
+      <div class="space-y-3">
+        <div>
+          <label for="modal-cust-name" class="block text-xs font-bold text-[#0f172a] mb-1">Nama Lengkap</label>
+          <input type="text" id="modal-cust-name" value="Adam Kurniawan" class="w-full text-xs px-3.5 py-2 border border-[#e2e8f0] rounded-lg bg-[#f8fafc] focus:outline-none focus:border-[#ea580c]">
+          <span class="text-xs text-slate-400 block mt-0.5">Dicetak sebagai lisensi watermark resmi e-book.</span>
+        </div>
+        <div>
+          <label for="modal-cust-phone" class="block text-xs font-bold text-[#0f172a] mb-1">Nomor WhatsApp Aktif</label>
+          <input type="tel" id="modal-cust-phone" value="081234567890" class="w-full text-xs px-3.5 py-2 border border-[#e2e8f0] rounded-lg bg-[#f8fafc] focus:outline-none focus:border-[#ea580c]">
+          <span class="text-xs text-slate-400 block mt-0.5">Bukti transfer & tautan download dikirim otomatis ke nomor ini.</span>
+        </div>
+        <div>
+          <label for="modal-cust-email" class="block text-xs font-bold text-[#0f172a] mb-1">Alamat Email</label>
+          <input type="email" id="modal-cust-email" value="adam@example.com" class="w-full text-xs px-3.5 py-2 border border-[#e2e8f0] rounded-lg bg-[#f8fafc] focus:outline-none focus:border-[#ea580c]">
+        </div>
+      </div>
+
+      <!-- Voucher Section -->
+      <div class="pt-2 border-t border-[#e2e8f0] space-y-2">
+        <label for="modal-voucher-input" class="block text-xs font-bold text-[#0f172a]">Gunakan Kode Voucher</label>
+        <div class="flex gap-2">
+          <input type="text" id="modal-voucher-input" placeholder="Coba: KANIDEE50" class="flex-1 text-xs px-3 py-2 border border-[#e2e8f0] rounded-lg font-bold uppercase text-[#ea580c] bg-[#f8fafc] focus:outline-none">
+          <button onclick="applyModalVoucher()" class="px-3.5 py-2 bg-[#0f172a] hover:bg-black text-white text-xs font-bold rounded-lg tab-transition">Terapkan</button>
+        </div>
+        <p id="modal-voucher-msg" class="text-xs font-bold text-orange-600 hidden"></p>
+      </div>
+
+      <!-- Total Calculation Ledger -->
+      <div class="bg-[#f8fafc] border border-[#e2e8f0] rounded-xl p-3.5 space-y-1.5 text-xs">
+        <div class="flex justify-between text-[#64748b]">
+          <span>Harga Program</span>
+          <span>Rp <span id="modal-ledger-subtotal">199.000</span></span>
+        </div>
+        <div class="flex justify-between text-orange-600 font-bold">
+          <span>Potongan Kupon</span>
+          <span>- Rp <span id="modal-ledger-discount">0</span></span>
+        </div>
+        <div class="flex justify-between text-[#64748b]">
+          <span>Biaya Gateway QRIS</span>
+          <span class="text-emerald-600 font-bold">GRATIS</span>
+        </div>
+        <div class="flex justify-between font-black text-sm text-[#0f172a] pt-2 border-t border-[#e2e8f0]">
+          <span>Total Tagihan</span>
+          <span class="text-[#ea580c]">Rp <span id="modal-ledger-total">199.000</span></span>
+        </div>
+      </div>
+
+      <!-- Action Split-Bar Button -->
+      <div class="pt-1 space-y-2">
+        <button onclick="triggerMidtransPayment()" class="w-full h-12 px-4 bg-[#ea580c] hover:bg-[#c2410c] active:scale-[0.99] text-white rounded-xl shadow-md flex items-center justify-between font-bold text-xs tab-transition group cursor-pointer">
+          <span class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+            <span class="text-xs font-extrabold">Bayar Sekarang via QRIS</span>
+          </span>
+          <span class="bg-black/20 px-3 py-1.5 rounded-lg text-xs font-black tracking-tight flex items-center gap-1">
+            <span>Rp</span>
+            <span id="modal-btn-price">199.000</span>
+            <span class="text-orange-200">→</span>
+          </span>
+        </button>
+
+        <p class="text-center text-xs text-slate-400">
+          Enkripsi SSL 256-Bit • Jalur Resmi Midtrans • Bebas Biaya Admin
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 12. MIDTRANS QRIS POPUP SIMULATOR                                         -->
+  <!-- ========================================================================= -->
+  <div id="midtrans-qris-modal" onclick="if(event.target === this) closeMidtransModal()" class="hidden fixed inset-0 bg-black/75 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl w-full max-w-xs p-5 space-y-4 shadow-2xl border border-slate-200 text-center">
+      <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+        <span class="text-xs font-bold text-red-600 bg-red-50 px-2.5 py-0.5 rounded">MIDTRANS QRIS 2.0</span>
+        <button onclick="closeMidtransModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold text-xs flex items-center justify-center cursor-pointer tab-transition">✕</button>
+      </div>
+
+      <div class="space-y-0.5">
+        <span class="text-xs text-[#64748b]">Total Pembayaran</span>
+        <div class="text-2xl font-black text-[#ea580c]">Rp <span id="qris-modal-amount">199.000</span></div>
+        <p class="text-xs text-slate-400 font-mono">Invoice: KND-20261029-4821</p>
+      </div>
+
+      <!-- QR Vector Barcode -->
+      <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 flex flex-col items-center justify-center space-y-2">
+        <svg class="w-36 h-36 bg-white p-2 rounded-lg border border-slate-300" viewBox="0 0 100 100">
+          <rect x="5" y="5" width="25" height="25" fill="#0f172a" rx="2"/>
+          <rect x="9" y="9" width="17" height="17" fill="#ffffff" rx="1"/>
+          <rect x="13" y="13" width="9" height="9" fill="#0f172a" rx="1"/>
+          <rect x="70" y="5" width="25" height="25" fill="#0f172a" rx="2"/>
+          <rect x="74" y="9" width="17" height="17" fill="#ffffff" rx="1"/>
+          <rect x="78" y="13" width="9" height="9" fill="#0f172a" rx="1"/>
+          <rect x="5" y="70" width="25" height="25" fill="#0f172a" rx="2"/>
+          <rect x="9" y="74" width="17" height="17" fill="#ffffff" rx="1"/>
+          <rect x="13" y="78" width="9" height="9" fill="#0f172a" rx="1"/>
+          <rect x="38" y="38" width="24" height="24" fill="#ea580c" rx="3"/>
+        </svg>
+        <span class="text-xs text-[#64748b]">Buka BCA, Livin, GoPay, atau OVO untuk scan QRIS</span>
+      </div>
+
+      <button onclick="simulateSuccessfulPayment()" class="w-full h-11 bg-[#ea580c] hover:bg-[#c2410c] active:scale-[0.99] text-white text-xs font-bold rounded-xl shadow-md tab-transition flex items-center justify-center gap-2 cursor-pointer">
+        <span class="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-xs">✓</span>
+        <span>Simulasikan Pembayaran Lunas</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 13. STANDARDIZED MODAL DIALOG (Custom Component — Replaces window.alert)   -->
+  <!-- ========================================================================= -->
+  <div id="knd-modal-dialog" onclick="if(event.target === this) closeCustomModal()" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-[9999] flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl w-full max-w-sm sm:max-w-md p-6 space-y-4 shadow-2xl border border-slate-200 text-left tab-transition">
+      <div class="flex items-start gap-3.5">
+        <div id="knd-modal-icon-box" class="w-11 h-11 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-xl shrink-0 font-bold">
+          🎉
+        </div>
+        <div class="flex-1 min-w-0">
+          <span id="knd-modal-badge" class="text-[11px] font-bold uppercase tracking-wider text-emerald-800 bg-emerald-100 px-2.5 py-0.5 rounded-md inline-block mb-1">
+            PEMBAYARAN LUNAS
+          </span>
+          <h3 id="knd-modal-title" class="text-base font-extrabold text-[#0f172a] leading-snug">
+            Transaksi Berhasil Diverifikasi
+          </h3>
+        </div>
+        <button onclick="closeCustomModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-700 text-xs font-bold flex items-center justify-center cursor-pointer tab-transition">✕</button>
+      </div>
+      
+      <!-- Body Content -->
+      <div id="knd-modal-body" class="text-xs text-[#64748b] leading-relaxed pt-1 space-y-2">
+      </div>
+      
+      <!-- Actions -->
+      <div id="knd-modal-actions" class="pt-3 border-t border-slate-100 flex items-center justify-end gap-2">
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Toast Notifications Container -->
+  <!-- Floating Toast Notifications Container (Bottom-Right Enterprise Dock) -->
+  <div id="knd-toast-container" class="fixed bottom-6 right-6 z-[9999] flex flex-col-reverse gap-2.5 pointer-events-none max-w-md w-full px-4"></div>
+
+  <!-- ========================================================================= -->
+  <!-- 14. JAVASCRIPT CONTROLLER                                                 -->
+  <!-- ========================================================================= -->
+  <script>
+    let activePrice = 199000;
+    let activeDiscount = 0;
+    let activeProductSlug = 'menu-sehat';
+    let activeProductName = 'Pelatihan Menu Sehat Paripurna';
+
+    // UI Toast Notification System (Non-truncating, Bottom-Right Dock)
+    function showToast({ title, message, type = 'success' }) {
+      const container = document.getElementById('knd-toast-container');
+      if (!container) return;
+      const toast = document.createElement('div');
+      const isSuccess = type === 'success';
+      const icon = isSuccess ? '✓' : 'ℹ';
+      const iconBg = isSuccess ? 'bg-emerald-500' : 'bg-[#ea580c]';
+      
+      toast.className = 'bg-[#0f172a] text-white border border-slate-700/80 pointer-events-auto rounded-xl p-3.5 shadow-2xl flex items-start gap-3 transition-all transform translate-y-3 opacity-0 duration-200';
+      toast.innerHTML = `
+        <span class="w-6 h-6 rounded-full ${iconBg} text-white flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">${icon}</span>
+        <div class="flex-1 min-w-0">
+          <span class="text-xs font-bold block leading-tight text-white">${title}</span>
+          <span class="text-xs text-slate-300 block leading-relaxed mt-0.5 whitespace-normal">${message}</span>
+        </div>
+        <button onclick="this.parentElement.remove()" class="text-slate-400 hover:text-white text-xs font-bold p-1 cursor-pointer">✕</button>
+      `;
+      container.appendChild(toast);
+      requestAnimationFrame(() => {
+        toast.classList.remove('translate-y-3', 'opacity-0');
+      });
+      setTimeout(() => {
+        toast.classList.add('translate-y-3', 'opacity-0');
+        setTimeout(() => toast.remove(), 250);
+      }, 4000);
+    }
+
+    // UI Custom Modal System (Standardized — Zero window.alert)
+    function showCustomModal({ title, badge = 'INFORMASI RESMI', badgeType = 'emerald', icon = '🔔', htmlContent, actionText = 'Mengerti & Tutup', onAction = null }) {
+      const modal = document.getElementById('knd-modal-dialog');
+      document.getElementById('knd-modal-title').innerText = title;
+      document.getElementById('knd-modal-badge').innerText = badge;
+      
+      const iconBox = document.getElementById('knd-modal-icon-box');
+      iconBox.innerText = icon;
+      
+      const badgeEl = document.getElementById('knd-modal-badge');
+      if (badgeType === 'emerald') {
+        iconBox.className = 'w-11 h-11 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-xl shrink-0 font-bold';
+        badgeEl.className = 'text-[11px] font-bold uppercase tracking-wider text-emerald-800 bg-emerald-100 px-2.5 py-0.5 rounded-md inline-block mb-1';
+      } else if (badgeType === 'blue') {
+        iconBox.className = 'w-11 h-11 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center text-xl shrink-0 font-bold';
+        badgeEl.className = 'text-[11px] font-bold uppercase tracking-wider text-blue-800 bg-blue-100 px-2.5 py-0.5 rounded-md inline-block mb-1';
+      } else {
+        iconBox.className = 'w-11 h-11 rounded-xl bg-orange-100 text-orange-700 flex items-center justify-center text-xl shrink-0 font-bold';
+        badgeEl.className = 'text-[11px] font-bold uppercase tracking-wider text-orange-800 bg-orange-100 px-2.5 py-0.5 rounded-md inline-block mb-1';
+      }
+
+      document.getElementById('knd-modal-body').innerHTML = htmlContent;
+      
+      const actionsBox = document.getElementById('knd-modal-actions');
+      actionsBox.innerHTML = `
+        <button id="knd-modal-action-btn" class="w-full py-2.5 px-4 rounded-xl bg-[#ea580c] hover:bg-[#c2410c] active:scale-[0.98] text-white text-xs font-extrabold shadow-md tab-transition cursor-pointer">
+          ${actionText}
+        </button>
+      `;
+      document.getElementById('knd-modal-action-btn').onclick = function() {
+        closeCustomModal();
+        if (onAction) onAction();
+      };
+
+      modal.classList.remove('hidden');
+    }
+
+    function closeCustomModal() {
+      const modal = document.getElementById('knd-modal-dialog');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu-drawer');
+      const icon = document.getElementById('mobile-menu-icon');
+      if (menu.classList.contains('hidden')) {
+        menu.classList.remove('hidden');
+        icon.innerText = '✕';
+      } else {
+        menu.classList.add('hidden');
+        icon.innerText = '☰';
+      }
+    }
+
+    function openCheckoutFor(productSlug) {
+      activeProductSlug = productSlug;
+      const titleElem = document.getElementById('modal-product-title');
+      const iconElem = document.getElementById('modal-product-icon');
+
+      if (productSlug === 'resep-tcm' || productSlug === 'menu-diet') {
+        activeProductName = 'Resep Sehat Traditional Chinese Medicine (TCM)';
+        iconElem.innerText = '📖';
+        activePrice = 99000;
+      } else if (productSlug === 'keripik-gadung') {
+        activeProductName = 'Keripik Gadung Sehat Kanidee (40g)';
+        iconElem.innerText = '🥨';
+        activePrice = 25000;
+      } else if (productSlug === 'kanirol') {
+        activeProductName = 'Kanirol (Kekian Ayam & Rajungan)';
+        iconElem.innerText = '🍱';
+        activePrice = 45000;
+      } else if (productSlug === 'egg-chicken-roll') {
+        activeProductName = 'Egg Chicken Roll (Frozen Bento)';
+        iconElem.innerText = '🍱';
+        activePrice = 42000;
+      } else if (productSlug === 'shrimp-roll') {
+        activeProductName = 'Shrimp Roll (Daging Ayam & Udang)';
+        iconElem.innerText = '🍱';
+        activePrice = 45000;
+      } else if (productSlug === 'ekado') {
+        activeProductName = 'Ekado Ayam Bento (Kembang Tahu)';
+        iconElem.innerText = '🍱';
+        activePrice = 45000;
+      } else if (productSlug === 'spicy-chicken') {
+        activeProductName = 'Spicy Chicken Nugget (Rasa Pedas)';
+        iconElem.innerText = '🍱';
+        activePrice = 40000;
+      } else if (productSlug === 'menu-sehat') {
+        activeProductName = 'Pelatihan Menu Sehat Paripurna';
+        iconElem.innerText = '🥗';
+        activePrice = 199000;
+      } else if (productSlug === 'maduka') {
+        activeProductName = 'Maduka (Formula Pendamping)';
+        iconElem.innerText = '🍯';
+        activePrice = 249000;
+      }
+
+      titleElem.innerText = activeProductName;
+      activeDiscount = 0;
+      document.getElementById('modal-voucher-input').value = '';
+      document.getElementById('modal-voucher-msg').classList.add('hidden');
+      updateModalCalculations();
+      document.getElementById('checkout-modal').classList.remove('hidden');
+    }
+
+    function closeCheckoutModal() {
+      document.getElementById('checkout-modal').classList.add('hidden');
+    }
+
+    function applyModalVoucher() {
+      const input = document.getElementById('modal-voucher-input').value.trim().toUpperCase();
+      const msg = document.getElementById('modal-voucher-msg');
+
+      if (!input) {
+        msg.classList.remove('hidden', 'text-orange-600');
+        msg.classList.add('text-red-600');
+        msg.innerText = '✕ Mohon masukkan kode voucher terlebih dahulu';
+        activeDiscount = 0;
+        updateModalCalculations();
+        return;
+      }
+
+      if (input === 'KANIDEE50') {
+        activeDiscount = 50000;
+        msg.classList.remove('hidden', 'text-red-600');
+        msg.classList.add('text-orange-600');
+        msg.innerText = '✓ Kode KANIDEE50 berhasil: Potongan Rp 50.000!';
+      } else if (input === 'HEMAT10') {
+        activeDiscount = 20000;
+        msg.classList.remove('hidden', 'text-red-600');
+        msg.classList.add('text-orange-600');
+        msg.innerText = '✓ Kode HEMAT10 berhasil: Potongan Rp 20.000!';
+      } else {
+        activeDiscount = 0;
+        msg.classList.remove('hidden', 'text-orange-600');
+        msg.classList.add('text-red-600');
+        msg.innerText = '✕ Kode kupon tidak ditemukan';
+      }
+      updateModalCalculations();
+    }
+
+    function updateModalCalculations() {
+      const finalTotal = Math.max(1000, activePrice - activeDiscount);
+      document.getElementById('modal-product-price').innerText = activePrice.toLocaleString('id-ID');
+      document.getElementById('modal-ledger-subtotal').innerText = activePrice.toLocaleString('id-ID');
+      document.getElementById('modal-ledger-discount').innerText = activeDiscount.toLocaleString('id-ID');
+      document.getElementById('modal-ledger-total').innerText = finalTotal.toLocaleString('id-ID');
+      document.getElementById('modal-btn-price').innerText = finalTotal.toLocaleString('id-ID');
+      document.getElementById('qris-modal-amount').innerText = finalTotal.toLocaleString('id-ID');
+    }
+
+    function triggerMidtransPayment() {
+      closeCheckoutModal();
+      document.getElementById('midtrans-qris-modal').classList.remove('hidden');
+    }
+
+    function closeMidtransModal() {
+      document.getElementById('midtrans-qris-modal').classList.add('hidden');
+    }
+
+    function simulateSuccessfulPayment() {
+      closeMidtransModal();
+      const custName = document.getElementById('modal-cust-name').value.trim() || 'Adam Kurniawan';
+      const custPhone = document.getElementById('modal-cust-phone').value.trim() || '081234567890';
+      const paidAmount = document.getElementById('qris-modal-amount').innerText;
+      
+      // Update download center inputs & preview dynamically
+      document.getElementById('order-lookup-phone').value = custPhone;
+      document.getElementById('download-file-title').innerText = activeProductName + '.pdf';
+      document.getElementById('download-file-meta').innerText = '14.8 MB • Lisensi Resmi: ' + custName + ' (' + custPhone + ')';
+      document.getElementById('download-result-box').classList.remove('hidden');
+
+      // Open Standardized Custom Confirmation Modal (Zero window.alert)
+      showCustomModal({
+        title: 'Pembayaran QRIS Berhasil Diverifikasi!',
+        badge: 'SETTLEMENT (LUNAS)',
+        badgeType: 'emerald',
+        icon: '🎉',
+        htmlContent: `
+          <div class="bg-slate-50 border border-slate-200 rounded-xl p-3.5 space-y-2 text-xs">
+            <div class="flex justify-between"><span class="text-slate-400">Nomor Invoice:</span><span class="font-mono font-bold text-[#0f172a]">KND-20261029-4821</span></div>
+            <div class="flex justify-between"><span class="text-slate-400">Produk:</span><span class="font-bold text-[#0f172a]">${activeProductName}</span></div>
+            <div class="flex justify-between"><span class="text-slate-400">Total Nominal:</span><span class="font-black text-[#ea580c]">Rp ${paidAmount}</span></div>
+            <div class="flex justify-between"><span class="text-slate-400">Lisensi Terdaftar:</span><span class="font-bold text-[#0f172a]">${custName} (${custPhone})</span></div>
+          </div>
+          <p class="text-xs text-slate-500 pt-1">Berkas digital Anda telah siap dan dapat diunduh langsung di bagian Download Center.</p>
+        `,
+        actionText: 'Buka Berkas di Download Center ↘',
+        onAction: () => {
+          window.location.hash = '#download';
+        }
+      });
+
+      showToast({
+        title: 'Transaksi Sukses',
+        message: 'Pembayaran Rp ' + paidAmount + ' terverifikasi oleh Midtrans'
+      });
+    }
+
+    function triggerFileDownload() {
+      const custName = document.getElementById('modal-cust-name').value.trim() || 'Adam Kurniawan';
+      const custPhone = document.getElementById('modal-cust-phone').value.trim() || '081234567890';
+      
+      // Actual file download trigger
+      const link = document.createElement('a');
+      link.href = 'assets/products/RESEP SEHAT TRADITIONAL CHINESE MEDICINE.pdf';
+      link.download = 'RESEP SEHAT TRADITIONAL CHINESE MEDICINE - Kanidee Lab.pdf';
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+
+      showCustomModal({
+        title: 'Mengunduh Berkas Digital Berlisensi',
+        badge: 'CLOUDFLARE CDN HIGH-SPEED',
+        badgeType: 'blue',
+        icon: '📥',
+        htmlContent: `
+          <div class="bg-blue-50/60 border border-blue-200 rounded-xl p-3.5 space-y-2 text-xs">
+            <div class="flex justify-between"><span class="text-slate-500">Nama File:</span><span class="font-bold text-[#0f172a]">RESEP SEHAT TRADITIONAL CHINESE MEDICINE.pdf</span></div>
+            <div class="flex justify-between"><span class="text-slate-500">Ukuran Berkas:</span><span class="font-semibold text-slate-700">4.0 MB (PDF Master 25 Halaman)</span></div>
+            <div class="flex justify-between"><span class="text-slate-500">Lisensi Watermark:</span><span class="font-mono font-bold text-blue-900">${custName} • ${custPhone}</span></div>
+            <div class="flex justify-between"><span class="text-slate-500">Protokol:</span><span class="text-emerald-700 font-bold">Enkripsi SHA-256 Valid</span></div>
+          </div>
+          <p class="text-xs text-slate-500 pt-1">Proses unduhan berkas PDF resmi telah dimulai ke perangkat Anda.</p>
+        `,
+        actionText: 'Selesai & Tutup'
+      });
+
+      showToast({
+        title: 'Unduhan Berhasil',
+        message: 'Berkas resmi Kanidee Lab berhasil diunduh ke perangkat Anda'
+      });
+    }
+
+    function verifyDownloadOrder() {
+      const id = document.getElementById('order-lookup-id').value.trim();
+      const phone = document.getElementById('order-lookup-phone').value.trim();
+      if (!id || !phone) {
+        showToast({
+          title: 'Input Belum Lengkap',
+          message: 'Mohon masukkan nomor invoice dan nomor WhatsApp',
+          type: 'error'
+        });
+        return;
+      }
+      
+      document.getElementById('download-result-box').classList.remove('hidden');
+      showToast({
+        title: 'Invoice Ditemukan',
+        message: 'Pesanan ' + id + ' status LUNAS. Akses unduh terbuka 71 jam.'
+      });
+    }
+
+    // Keyboard Accessibility: Close Modals with Escape Key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeCheckoutModal();
+        closeMidtransModal();
+        closeCustomModal();
+      }
+    });
+  </script>
+</body>
+</html>

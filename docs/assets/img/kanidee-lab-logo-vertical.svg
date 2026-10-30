@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 420" width="400" height="420">
+  <path d="M 120,96 Q 120,110 106,110 Q 120,110 120,124 Q 120,110 134,110 Q 120,110 120,96 Z" fill="#dc2626" />
+  <circle cx="102" cy="156" r="3.5" fill="#dc2626" />
+  <circle cx="138" cy="82" r="2.5" fill="#ea580c" />
+  <path d="M 288,232 Q 288,238 282,238 Q 288,238 288,244 Q 288,238 294,238 Q 288,238 288,232 Z" fill="#ea580c" />
+
+  <g transform="rotate(-23 200 208)">
+    <path d="M 76,208 A 128 34 0 0 1 324,208" fill="none" stroke="#0f172a" stroke-width="10" stroke-linecap="round" />
+  </g>
+
+  <path d="M 184,84 L 184,118 C 184,132 174,142 162,152 C 146,166 136,186 136,208 C 136,243.3 164.7,272 200,272 C 235.3,272 264,243.3 264,208 C 264,186 254,166 238,152 C 226,142 216,132 216,118 L 216,84 Z" fill="#ffffff" />
+  <path d="M 139,188 C 160,206 188,180 261,188 A 64 64 0 1 1 139,188 Z" fill="#dc2626" />
+  <path d="M 142,188 C 165,202 185,188 206,184 C 185,186 165,198 142,186 Z" fill="#38bdf8" />
+  <circle cx="170" cy="224" r="11" fill="#84cc16" stroke="#4d7c0f" stroke-width="1.5" />
+  <circle cx="188" cy="148" r="12" fill="#dc2626" />
+  <circle cx="218" cy="160" r="6" fill="#dc2626" />
+  <circle cx="156" cy="154" r="4.5" fill="#dc2626" />
+  <circle cx="230" cy="214" r="7" fill="#f97316" opacity="0.9" />
+
+  <rect x="174" y="66" width="52" height="13" rx="6.5" fill="#0f172a" />
+  <rect x="180" y="79" width="40" height="5" rx="2.5" fill="#0f172a" />
+  <path d="M 184,84 L 184,118 C 184,132 174,142 162,152 C 146,166 136,186 136,208 C 136,243.3 164.7,272 200,272 C 235.3,272 264,243.3 264,208 C 264,186 254,166 238,152 C 226,142 216,132 216,118 L 216,84" 
+        fill="none" stroke="#0f172a" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" />
+
+  <g transform="rotate(-23 200 208)">
+    <path d="M 76,208 A 128 34 0 0 0 324,208" fill="none" stroke="#0f172a" stroke-width="10" stroke-linecap="round" />
+  </g>
+
+  <text x="200" y="342" text-anchor="middle" font-family="'Plus Jakarta Sans', Inter, -apple-system, sans-serif" font-weight="900" font-size="33" letter-spacing="0.14em" fill="#0f172a">KANIDEE LAB</text>
+  <text x="200" y="374" text-anchor="middle" font-family="'Plus Jakarta Sans', Inter, -apple-system, sans-serif" font-weight="700" font-size="11.5" letter-spacing="0.52em" fill="#475569">LABORATORY</text>
+</svg>

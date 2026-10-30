@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="id" class="h-full bg-[#f1f5f9]">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kanidee Lab — CMS Admin & Merchant Backoffice Portal</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/kanidee-lab-favicon.svg">
+  <link rel="alternate icon" href="assets/img/favicon.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    h1, h2, h3, h4, .font-heading {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .cms-card {
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+    }
+    .smooth-scroll {
+      scroll-behavior: smooth;
+    }
+    .smooth-scroll::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .smooth-scroll::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .smooth-scroll::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    .tab-transition {
+      transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+  </style>
+</head>
+<body class="h-full flex overflow-hidden text-[#0f172a]">
+
+  <!-- ========================================================================= -->
+  <!-- 1. LEFT SIDEBAR NAVIGATION (Desktop Backoffice Standard)                 -->
+  <!-- ========================================================================= -->
+  <aside class="w-64 bg-[#0f172a] text-slate-300 flex flex-col shrink-0 border-r border-[#1e293b] select-none z-30">
+    <!-- Brand Header -->
+    <div class="p-4 border-b border-[#1e293b] flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <img src="assets/img/kanidee-lab-icon-dark.svg" alt="Kanidee Lab" class="w-8 h-8 object-contain">
+        <div>
+          <span class="font-extrabold text-sm text-white tracking-tight block leading-tight">KANIDEE LAB CMS</span>
+          <span class="text-xs text-orange-400 font-semibold block">Merchant Backoffice v2.0</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Admin Profile Badge -->
+    <div class="p-3 mx-3 my-3 bg-[#1e293b]/70 rounded-xl border border-slate-700/60 flex items-center justify-between">
+      <div class="flex items-center gap-2.5 min-w-0">
+        <div class="w-8 h-8 rounded-full bg-orange-600 text-white font-bold text-xs flex items-center justify-center shrink-0">
+          AK
+        </div>
+        <div class="min-w-0">
+          <span class="text-xs font-bold text-white block truncate">Adam Kurniawan</span>
+          <span class="text-xs text-emerald-400 font-semibold flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Super Admin
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Menu Items -->
+    <nav class="flex-1 px-3 space-y-1 overflow-y-auto smooth-scroll">
+      <button onclick="switchCmsTab('dashboard')" id="cms-tab-dashboard" class="cms-nav-item w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-xs font-semibold tab-transition bg-[#ea580c] text-white">
+        <span class="flex items-center gap-2.5">
+          <span class="text-sm">📊</span>
+          <span>Dashboard & Analisis</span>
+        </span>
+        <span class="text-xs bg-white/20 text-white px-2 py-0.5 rounded-full font-bold whitespace-nowrap shrink-0">Live</span>
+      </button>
+
+      <button onclick="switchCmsTab('products')" id="cms-tab-products" class="cms-nav-item w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-xs font-medium text-slate-300 hover:bg-[#1e293b] hover:text-white tab-transition">
+        <span class="flex items-center gap-2.5">
+          <span class="text-sm">📦</span>
+          <span>Katalog Produk</span>
+        </span>
+        <span class="text-xs bg-slate-800 text-slate-300 px-2 py-0.5 rounded-full whitespace-nowrap shrink-0">3</span>
+      </button>
+
+      <button onclick="switchCmsTab('orders')" id="cms-tab-orders" class="cms-nav-item w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-xs font-medium text-slate-300 hover:bg-[#1e293b] hover:text-white tab-transition">
+        <span class="flex items-center gap-2.5">
+          <span class="text-sm">💳</span>
+          <span>Transaksi & Pesanan</span>
+        </span>
+        <span class="text-xs bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full font-bold whitespace-nowrap shrink-0">18 Lunas</span>
+      </button>
+
+      <button onclick="switchCmsTab('articles')" id="cms-tab-articles" class="cms-nav-item w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-xs font-medium text-slate-300 hover:bg-[#1e293b] hover:text-white tab-transition">
+        <span class="flex items-center gap-2.5">
+          <span class="text-sm">✍️</span>
+          <span>Manajemen Artikel</span>
+        </span>
+        <span class="text-xs bg-slate-800 text-slate-300 px-2 py-0.5 rounded-full whitespace-nowrap shrink-0">1 Draft</span>
+      </button>
+
+      <button onclick="switchCmsTab('vouchers')" id="cms-tab-vouchers" class="cms-nav-item w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-xs font-medium text-slate-300 hover:bg-[#1e293b] hover:text-white tab-transition">
+        <span class="flex items-center gap-2.5">
+          <span class="text-sm">🏷️</span>
+          <span>Voucher & Promo</span>
+        </span>
+        <span class="text-xs bg-orange-500/20 text-orange-300 px-2 py-0.5 rounded-full font-bold whitespace-nowrap shrink-0">2 Aktif</span>
+      </button>
+
+      <button onclick="switchCmsTab('settings')" id="cms-tab-settings" class="cms-nav-item w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-xs font-medium text-slate-300 hover:bg-[#1e293b] hover:text-white tab-transition">
+        <span class="flex items-center gap-2.5">
+          <span class="text-sm">⚙️</span>
+          <span>Pengaturan & Gateway</span>
+        </span>
+      </button>
+    </nav>
+
+    <!-- Bottom Infrastructure Footnote & Storefront Link -->
+    <div class="p-3 border-t border-[#1e293b] space-y-2">
+      <div class="bg-[#0a0e17] p-2.5 rounded-lg border border-slate-800 text-xs text-slate-400 space-y-1">
+        <div class="flex justify-between font-semibold">
+          <span>Supabase DB (Postgres 17)</span>
+          <span class="text-emerald-400">18% Kuota</span>
+        </div>
+        <div class="w-full bg-slate-800 h-1 rounded-full overflow-hidden">
+          <div class="bg-emerald-500 h-full w-[18%]"></div>
+        </div>
+      </div>
+
+      <!-- LINK TO DEDICATED STOREFRONT -->
+      <a href="kanidee_storefront_mockup.html" class="w-full py-2 px-3 rounded-lg bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs flex items-center justify-center gap-2 tab-transition shadow-sm">
+        <span>🛍️</span>
+        <span>Lihat Web Toko Customer ↗</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- ========================================================================= -->
+  <!-- 2. MAIN CMS BACKOFFICE WORKBENCH                                         -->
+  <!-- ========================================================================= -->
+  <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+
+    <!-- Top Admin Header Bar -->
+    <header class="bg-white border-b border-[#e2e8f0] px-6 py-3 flex items-center justify-between shrink-0">
+      <div class="flex items-center gap-4">
+        <div>
+          <h1 id="cms-header-title" class="text-base font-extrabold text-[#0f172a] leading-tight">Dashboard & Analisis Penjualan</h1>
+          <p id="cms-header-subtitle" class="text-xs text-[#64748b]">Pantau pendapatan omzet real-time, status pembayaran Midtrans, dan performa program.</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3 shrink-0">
+        <!-- Live Gateway Status Pill -->
+        <div class="flex items-center gap-2 bg-emerald-50 border border-emerald-200 px-3 py-1.5 rounded-lg text-xs font-semibold text-emerald-800 whitespace-nowrap shrink-0">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>Midtrans Snap: Production Aktif</span>
+        </div>
+
+        <button onclick="simulateNewOrderPush()" class="px-3.5 py-1.5 bg-[#0f172a] hover:bg-[#1e293b] active:scale-[0.98] text-white text-xs font-bold rounded-lg shadow-sm tab-transition flex items-center gap-1.5 whitespace-nowrap shrink-0 cursor-pointer">
+          <span>⚡</span>
+          <span>Simulasi Order Baru Masuk</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Scrollable Content Canvas -->
+    <main class="flex-1 overflow-y-auto smooth-scroll p-6 bg-[#f8fafc]">
+
+      <!-- ===================================================================== -->
+      <!-- VIEW 1: DASHBOARD & ANALYTICS                                         -->
+      <!-- ===================================================================== -->
+      <section id="cms-view-dashboard" class="cms-view space-y-6">
+        <!-- 4 Top KPI Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <!-- KPI 1: Omzet Hari Ini -->
+          <div class="bg-white border border-[#e2e8f0] rounded-xl p-4 cms-card">
+            <span class="text-xs font-bold text-[#64748b] uppercase tracking-wider block">Omzet Hari Ini</span>
+            <div class="text-2xl font-black text-[#ea580c] mt-1" id="dash-omzet-val">Rp 2.450.000</div>
+            <div class="flex items-center gap-1.5 text-xs text-emerald-600 font-bold mt-2">
+              <span>↑ +18.4%</span>
+              <span class="text-[#64748b] font-normal">vs hari kemarin</span>
+            </div>
+          </div>
+
+          <!-- KPI 2: Total Pesanan Lunas -->
+          <div class="bg-white border border-[#e2e8f0] rounded-xl p-4 cms-card">
+            <span class="text-xs font-bold text-[#64748b] uppercase tracking-wider block">Pesanan Lunas (PAID)</span>
+            <div class="text-2xl font-black text-[#0f172a] mt-1" id="dash-paid-orders-val">18 Pesanan</div>
+            <div class="flex items-center gap-1.5 text-xs text-emerald-600 font-bold mt-2">
+              <span>100% Terverifikasi</span>
+              <span class="text-[#64748b] font-normal">via Webhook SHA-512</span>
+            </div>
+          </div>
+
+          <!-- KPI 3: Rata-Rata Nilai Transaksi (AOV) -->
+          <div class="bg-white border border-[#e2e8f0] rounded-xl p-4 cms-card">
+            <span class="text-xs font-bold text-[#64748b] uppercase tracking-wider block">Rata-Rata Order (AOV)</span>
+            <div class="text-2xl font-black text-[#0f172a] mt-1">Rp 136.111</div>
+            <div class="flex items-center gap-1.5 text-xs text-orange-600 font-bold mt-2">
+              <span>Dominan:</span>
+              <span class="text-[#64748b] font-normal">Pelatihan Menu Sehat</span>
+            </div>
+          </div>
+
+          <!-- KPI 4: Konversi Checkout -->
+          <div class="bg-white border border-[#e2e8f0] rounded-xl p-4 cms-card">
+            <span class="text-xs font-bold text-[#64748b] uppercase tracking-wider block">Tingkat Konversi Toko</span>
+            <div class="text-2xl font-black text-indigo-700 mt-1">12.68%</div>
+            <div class="flex items-center gap-1.5 text-xs text-indigo-600 font-bold mt-2">
+              <span>1.420 Kunjungan</span>
+              <span class="text-[#64748b] font-normal">dari Bio Link</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sales Distribution & Recent Activities Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <!-- Left 2 Cols: Recent Transactions Feed -->
+          <div class="lg:col-span-2 bg-white border border-[#e2e8f0] rounded-xl p-5 cms-card space-y-4">
+            <div class="flex items-center justify-between pb-3 border-b border-[#e2e8f0]">
+              <div>
+                <h2 class="text-sm font-extrabold text-[#0f172a]">Aktivitas Transaksi Terbaru</h2>
+                <p class="text-xs text-[#64748b]">Pembaruan otomatis dari Webhook Midtrans</p>
+              </div>
+              <button onclick="switchCmsTab('orders')" class="text-xs text-orange-600 hover:text-orange-700 font-bold">
+                Lihat Semua (24) →
+              </button>
+            </div>
+
+            <div class="overflow-x-auto">
+              <table class="w-full text-xs text-left">
+                <thead class="bg-slate-50 text-[#64748b] uppercase font-bold border-b border-[#e2e8f0]">
+                  <tr>
+                    <th class="px-3.5 py-2.5 whitespace-nowrap">Invoice</th>
+                    <th class="px-3.5 py-2.5 whitespace-nowrap">Nama Pembeli</th>
+                    <th class="px-3.5 py-2.5 whitespace-nowrap">Program</th>
+                    <th class="px-3.5 py-2.5 whitespace-nowrap">Metode</th>
+                    <th class="px-3.5 py-2.5 text-right whitespace-nowrap">Nominal</th>
+                    <th class="px-3.5 py-2.5 text-center whitespace-nowrap">Status</th>
+                    <th class="px-3.5 py-2.5 text-right whitespace-nowrap">Aksi</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-[#e2e8f0]" id="dash-recent-table-body">
+                  <tr class="hover:bg-slate-50">
+                    <td class="px-3.5 py-3 font-mono font-bold text-[#0f172a] whitespace-nowrap">KND-20261029-4821</td>
+                    <td class="px-3.5 py-3 font-bold text-[#0f172a] whitespace-nowrap">Adam Kurniawan <span class="block text-slate-400 font-normal text-xs">081234567890</span></td>
+                    <td class="px-3.5 py-3 text-[#64748b] whitespace-nowrap">Resep Sehat TCM (E-Book)</td>
+                    <td class="px-3.5 py-3 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-orange-100 text-orange-800 font-bold whitespace-nowrap inline-block">QRIS (GoPay)</span></td>
+                    <td class="px-3.5 py-3 text-right font-black text-[#ea580c] whitespace-nowrap">Rp 99.000</td>
+                    <td class="px-3.5 py-3 text-center whitespace-nowrap"><span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold whitespace-nowrap inline-flex items-center">PAID</span></td>
+                    <td class="px-3.5 py-3 text-right whitespace-nowrap">
+                      <button onclick="showInvoiceDetail('KND-20261029-4821', 'Adam Kurniawan', '081234567890', 'Resep Sehat TCM (E-Book 25 Hal)', 'QRIS (GoPay)', 99000, 'PAID')" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-bold text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 shadow-2xs hover:border-slate-300 active:scale-95 tab-transition cursor-pointer">
+                        <span>👁️</span> Detail
+                      </button>
+                    </td>
+                  </tr>
+                  <tr class="hover:bg-slate-50">
+                    <td class="px-3.5 py-3 font-mono font-bold text-[#0f172a] whitespace-nowrap">KND-20261029-4820</td>
+                    <td class="px-3.5 py-3 font-bold text-[#0f172a] whitespace-nowrap">Siti Rahma <span class="block text-slate-400 font-normal text-xs">081398765432</span></td>
+                    <td class="px-3.5 py-3 text-[#64748b] whitespace-nowrap">Keripik Gadung Sehat (5 Pack)</td>
+                    <td class="px-3.5 py-3 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-blue-100 text-blue-800 font-bold whitespace-nowrap inline-block">BCA VA</span></td>
+                    <td class="px-3.5 py-3 text-right font-black text-[#ea580c] whitespace-nowrap">Rp 125.000</td>
+                    <td class="px-3.5 py-3 text-center whitespace-nowrap"><span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold whitespace-nowrap inline-flex items-center">PAID</span></td>
+                    <td class="px-3.5 py-3 text-right whitespace-nowrap">
+                      <button onclick="showInvoiceDetail('KND-20261029-4820', 'Siti Rahma', '081398765432', 'Keripik Gadung Sehat (5 Pack)', 'BCA Virtual Account', 125000, 'PAID')" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-bold text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 shadow-2xs hover:border-slate-300 active:scale-95 tab-transition cursor-pointer">
+                        <span>👁️</span> Detail
+                      </button>
+                    </td>
+                  </tr>
+                  <tr class="hover:bg-slate-50">
+                    <td class="px-3.5 py-3 font-mono font-bold text-[#0f172a] whitespace-nowrap">KND-20261029-4819</td>
+                    <td class="px-3.5 py-3 font-bold text-[#0f172a] whitespace-nowrap">Budi Santoso <span class="block text-slate-400 font-normal text-xs">085211223344</span></td>
+                    <td class="px-3.5 py-3 text-[#64748b] whitespace-nowrap">Kanirol Bento + Ekado</td>
+                    <td class="px-3.5 py-3 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-amber-100 text-amber-800 font-bold whitespace-nowrap inline-block">Mandiri VA</span></td>
+                    <td class="px-3.5 py-3 text-right font-black text-[#ea580c] whitespace-nowrap">Rp 90.000</td>
+                    <td class="px-3.5 py-3 text-center whitespace-nowrap"><span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold whitespace-nowrap inline-flex items-center">PAID</span></td>
+                    <td class="px-3.5 py-3 text-right whitespace-nowrap">
+                      <button onclick="showInvoiceDetail('KND-20261029-4819', 'Budi Santoso', '085211223344', 'Kanirol Bento + Ekado', 'Mandiri VA', 90000, 'PAID')" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-bold text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 shadow-2xs hover:border-slate-300 active:scale-95 tab-transition cursor-pointer">
+                        <span>👁️</span> Detail
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Right 1 Col: Product Performance -->
+          <div class="bg-white border border-[#e2e8f0] rounded-xl p-5 cms-card space-y-4">
+            <h2 class="text-sm font-extrabold text-[#0f172a] pb-2 border-b border-[#e2e8f0]">Kontribusi Penjualan Program</h2>
+
+            <div class="space-y-4">
+              <!-- Item 1 -->
+              <div class="space-y-1.5">
+                <div class="flex justify-between text-xs font-bold">
+                  <span class="text-[#0f172a]">1. Pelatihan Menu Sehat</span>
+                  <span class="text-[#ea580c]">62% (Rp 1.519.000)</span>
+                </div>
+                <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                  <div class="bg-[#ea580c] h-full w-[62%]"></div>
+                </div>
+                <span class="text-xs text-[#64748b]">11 Pesanan Lunas • Kurikulum + Video</span>
+              </div>
+
+              <!-- Item 2 -->
+              <div class="space-y-1.5">
+                <div class="flex justify-between text-xs font-bold">
+                  <span class="text-[#0f172a]">2. Menu Diet 30 Hari</span>
+                  <span class="text-indigo-600">28% (Rp 686.000)</span>
+                </div>
+                <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                  <div class="bg-indigo-600 h-full w-[28%]"></div>
+                </div>
+                <span class="text-xs text-[#64748b]">6 Pesanan Lunas • E-Book PDF</span>
+              </div>
+
+              <!-- Item 3 -->
+              <div class="space-y-1.5">
+                <div class="flex justify-between text-xs font-bold">
+                  <span class="text-[#0f172a]">3. Maduka Formula</span>
+                  <span class="text-amber-600">10% (Rp 249.000)</span>
+                </div>
+                <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                  <div class="bg-amber-500 h-full w-[10%]"></div>
+                </div>
+                <span class="text-xs text-[#64748b]">1 Pesanan Lunas • Pendamping Metabolisme</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================== -->
+      <!-- VIEW 2: KATALOG PRODUK                                                -->
+      <!-- ===================================================================== -->
+      <section id="cms-view-products" class="cms-view hidden space-y-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-sm font-extrabold text-[#0f172a]">Daftar Katalog Produk Digital</h2>
+            <p class="text-xs text-[#64748b]">Kelola harga jual, file digital master PDF, dan ketersediaan di web customer.</p>
+          </div>
+          <button onclick="openAddProductModal()" class="px-3.5 py-2 bg-[#ea580c] hover:bg-[#c2410c] text-white text-xs font-bold rounded-lg shadow-sm tab-transition flex items-center gap-1.5 cursor-pointer">
+            <span>+</span> Tambah Produk Baru
+          </button>
+        </div>
+
+        <div class="bg-white border border-[#e2e8f0] rounded-xl cms-card overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-xs text-left">
+              <thead class="bg-slate-50 text-[#64748b] uppercase font-bold border-b border-[#e2e8f0]">
+                <tr>
+                  <th class="px-4 py-3 whitespace-nowrap">Produk</th>
+                  <th class="px-4 py-3 whitespace-nowrap">Format Berkas</th>
+                  <th class="px-4 py-3 whitespace-nowrap">Harga Normal</th>
+                  <th class="px-4 py-3 whitespace-nowrap">Harga Promo</th>
+                  <th class="px-4 py-3 text-center whitespace-nowrap">Status</th>
+                  <th class="px-4 py-3 text-right whitespace-nowrap">Aksi</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-[#e2e8f0]">
+                <!-- Product 1: E-Book TCM -->
+                <tr class="hover:bg-slate-50">
+                  <td class="px-4 py-3 flex items-center gap-3 whitespace-nowrap">
+                    <span class="text-2xl">📖</span>
+                    <div>
+                      <span class="font-bold text-[#0f172a] block">Resep Sehat Medis Timur (TCM)</span>
+                      <span class="text-slate-400 text-xs font-mono">Slug: /checkout/resep-tcm</span>
+                    </div>
+                  </td>
+                  <td class="px-4 py-3 text-[#64748b] whitespace-nowrap">PDF (4.0 MB • 25 Hal)</td>
+                  <td class="px-4 py-3 text-slate-400 line-through whitespace-nowrap">Rp 149.000</td>
+                  <td class="px-4 py-3 font-bold text-[#ea580c] whitespace-nowrap">Rp 99.000</td>
+                  <td class="px-4 py-3 text-center whitespace-nowrap">
+                    <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold whitespace-nowrap inline-flex items-center">Aktif Dijual</span>
+                  </td>
+                  <td class="px-4 py-3 text-right whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <button onclick="openEditProductModal('Resep Sehat TCM (Medis Timur)', 99000, 149000)" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-bold text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 shadow-2xs hover:border-slate-300 active:scale-95 tab-transition cursor-pointer">
+                        <span>✏️</span>
+                        <span>Edit</span>
+                      </button>
+                      <button onclick="toggleProductStatus(this, 'Resep Sehat TCM')" title="Ubah Status Ketersediaan" class="inline-flex items-center justify-center w-7 h-7 rounded-lg text-slate-400 hover:text-amber-700 hover:bg-amber-50 border border-slate-200 hover:border-amber-200 active:scale-95 tab-transition cursor-pointer">
+                        <span class="text-xs">⏸️</span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Product 2: Keripik Gadung -->
+                <tr class="hover:bg-slate-50">
+                  <td class="px-4 py-3 flex items-center gap-3 whitespace-nowrap">
+                    <span class="text-2xl">🥨</span>
+                    <div>
+                      <span class="font-bold text-[#0f172a] block">Keripik Gadung Sehat Kanidee (40g)</span>
+                      <span class="text-slate-400 text-xs font-mono">Slug: /checkout/keripik-gadung</span>
+                    </div>
+                  </td>
+                  <td class="px-4 py-3 text-[#64748b] whitespace-nowrap">Camilan Alami (40g)</td>
+                  <td class="px-4 py-3 text-slate-400 line-through whitespace-nowrap">Rp 35.000</td>
+                  <td class="px-4 py-3 font-bold text-[#ea580c] whitespace-nowrap">Rp 25.000</td>
+                  <td class="px-4 py-3 text-center whitespace-nowrap">
+                    <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold whitespace-nowrap inline-flex items-center">Aktif Dijual</span>
+                  </td>
+                  <td class="px-4 py-3 text-right whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <button onclick="openEditProductModal('Keripik Gadung Sehat Kanidee', 25000, 35000)" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-bold text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 shadow-2xs hover:border-slate-300 active:scale-95 tab-transition cursor-pointer">
+                        <span>✏️</span>
+                        <span>Edit</span>
+                      </button>
+                      <button onclick="toggleProductStatus(this, 'Keripik Gadung Sehat')" title="Ubah Status Ketersediaan" class="inline-flex items-center justify-center w-7 h-7 rounded-lg text-slate-400 hover:text-amber-700 hover:bg-amber-50 border border-slate-200 hover:border-amber-200 active:scale-95 tab-transition cursor-pointer">
+                        <span class="text-xs">⏸️</span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Product 3: Kanirol Bento -->
+                <tr class="hover:bg-slate-50">
+                  <td class="px-4 py-3 flex items-center gap-3 whitespace-nowrap">
+                    <span class="text-2xl">🍱</span>
+                    <div>
+                      <span class="font-bold text-[#0f172a] block">Kanirol (Kekian Ayam &amp; Rajungan)</span>
+                      <span class="text-slate-400 text-xs font-mono">Slug: /checkout/kanirol</span>
+                    </div>
+                  </td>
+                  <td class="px-4 py-3 text-[#64748b] whitespace-nowrap">Frozen Bento (-18°C)</td>
+                  <td class="px-4 py-3 text-slate-400 line-through whitespace-nowrap">Rp 60.000</td>
+                  <td class="px-4 py-3 font-bold text-[#ea580c] whitespace-nowrap">Rp 45.000</td>
+                  <td class="px-4 py-3 text-center whitespace-nowrap">
+                    <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold whitespace-nowrap inline-flex items-center">Aktif Dijual</span>
+                  </td>
+                  <td class="px-4 py-3 text-right whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <button onclick="openEditProductModal('Kanirol Bento', 45000, 60000)" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-bold text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 shadow-2xs hover:border-slate-300 active:scale-95 tab-transition cursor-pointer">
+                        <span>✏️</span>
+                        <span>Edit</span>
+                      </button>
+                      <button onclick="toggleProductStatus(this, 'Kanirol Bento')" title="Ubah Status Ketersediaan" class="inline-flex items-center justify-center w-7 h-7 rounded-lg text-slate-400 hover:text-amber-700 hover:bg-amber-50 border border-slate-200 hover:border-amber-200 active:scale-95 tab-transition cursor-pointer">
+                        <span class="text-xs">⏸️</span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Product 4: Egg Chicken Roll -->
+                <tr class="hover:bg-slate-50">
+                  <td class="px-4 py-3 flex items-center gap-3 whitespace-nowrap">
+                    <span class="text-2xl">🍱</span>
+                    <div>
+                      <span class="font-bold text-[#0f172a] block">Egg Chicken Roll Bento</span>
+                      <span class="text-slate-400 text-xs font-mono">Slug: /checkout/egg-chicken-roll</span>
+                    </div>
+                  </td>
+                  <td class="px-4 py-3 text-[#64748b] whitespace-nowrap">Frozen Bento (-18°C)</td>
+                  <td class="px-4 py-3 text-slate-400 line-through whitespace-nowrap">Rp 55.000</td>
+                  <td class="px-4 py-3 font-bold text-[#ea580c] whitespace-nowrap">Rp 42.000</td>
+                  <td class="px-4 py-3 text-center whitespace-nowrap">
+                    <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold whitespace-nowrap inline-flex items-center">Aktif Dijual</span>
+                  </td>
+                  <td class="px-4 py-3 text-right whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <button onclick="openEditProductModal('Egg Chicken Roll', 42000, 55000)" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-bold text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 shadow-2xs hover:border-slate-300 active:scale-95 tab-transition cursor-pointer">
+                        <span>✏️</span>
+                        <span>Edit</span>
+                      </button>
+                      <button onclick="toggleProductStatus(this, 'Egg Chicken Roll')" title="Ubah Status Ketersediaan" class="inline-flex items-center justify-center w-7 h-7 rounded-lg text-slate-400 hover:text-amber-700 hover:bg-amber-50 border border-slate-200 hover:border-amber-200 active:scale-95 tab-transition cursor-pointer">
+                        <span class="text-xs">⏸️</span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Product 5: Shrimp Roll -->
+                <tr class="hover:bg-slate-50">
+                  <td class="px-4 py-3 flex items-center gap-3 whitespace-nowrap">
+                    <span class="text-2xl">🍱</span>
+                    <div>
+                      <span class="font-bold text-[#0f172a] block">Shrimp Roll (Ayam &amp; Udang)</span>
+                      <span class="text-slate-400 text-xs font-mono">Slug: /checkout/shrimp-roll</span>
+                    </div>
+                  </td>
+                  <td class="px-4 py-3 text-[#64748b] whitespace-nowrap">Frozen Bento (-18°C)</td>
+                  <td class="px-4 py-3 text-slate-400 line-through whitespace-nowrap">Rp 60.000</td>
+                  <td class="px-4 py-3 font-bold text-[#ea580c] whitespace-nowrap">Rp 45.000</td>
+                  <td class="px-4 py-3 text-center whitespace-nowrap">
+                    <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold whitespace-nowrap inline-flex items-center">Aktif Dijual</span>
+                  </td>
+                  <td class="px-4 py-3 text-right whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <button onclick="openEditProductModal('Shrimp Roll Bento', 45000, 60000)" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-bold text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 shadow-2xs hover:border-slate-300 active:scale-95 tab-transition cursor-pointer">
+                        <span>✏️</span>
+                        <span>Edit</span>
+                      </button>
+                      <button onclick="toggleProductStatus(this, 'Shrimp Roll Bento')" title="Ubah Status Ketersediaan" class="inline-flex items-center justify-center w-7 h-7 rounded-lg text-slate-400 hover:text-amber-700 hover:bg-amber-50 border border-slate-200 hover:border-amber-200 active:scale-95 tab-transition cursor-pointer">
+                        <span class="text-xs">⏸️</span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Product 6: Ekado Bento -->
+                <tr class="hover:bg-slate-50">
+                  <td class="px-4 py-3 flex items-center gap-3 whitespace-nowrap">
+                    <span class="text-2xl">🍱</span>
+                    <div>
+                      <span class="font-bold text-[#0f172a] block">Ekado Ayam Bento (Kembang Tahu)</span>
+                      <span class="text-slate-400 text-xs font-mono">Slug: /checkout/ekado</span>
+                    </div>
+                  </td>
+                  <td class="px-4 py-3 text-[#64748b] whitespace-nowrap">Frozen Bento (-18°C)</td>
+                  <td class="px-4 py-3 text-slate-400 line-through whitespace-nowrap">Rp 60.000</td>
+                  <td class="px-4 py-3 font-bold text-[#ea580c] whitespace-nowrap">Rp 45.000</td>
+                  <td class="px-4 py-3 text-center whitespace-nowrap">
+                    <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold whitespace-nowrap inline-flex items-center">Aktif Dijual</span>
+                  </td>
+                  <td class="px-4 py-3 text-right whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <button onclick="openEditProductModal('Ekado Ayam Bento', 45000, 60000)" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-bold text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 shadow-2xs hover:border-slate-300 active:scale-95 tab-transition cursor-pointer">
+                        <span>✏️</span>
+                        <span>Edit</span>
+                      </button>
+                      <button onclick="toggleProductStatus(this, 'Ekado Ayam Bento')" title="Ubah Status Ketersediaan" class="inline-flex items-center justify-center w-7 h-7 rounded-lg text-slate-400 hover:text-amber-700 hover:bg-amber-50 border border-slate-200 hover:border-amber-200 active:scale-95 tab-transition cursor-pointer">
+                        <span class="text-xs">⏸️</span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Product 7: Spicy Chicken -->
+                <tr class="hover:bg-slate-50">
+                  <td class="px-4 py-3 flex items-center gap-3 whitespace-nowrap">
+                    <span class="text-2xl">🍱</span>
+                    <div>
+                      <span class="font-bold text-[#0f172a] block">Spicy Chicken Nugget</span>
+                      <span class="text-slate-400 text-xs font-mono">Slug: /checkout/spicy-chicken</span>
+                    </div>
+                  </td>
+                  <td class="px-4 py-3 text-[#64748b] whitespace-nowrap">Frozen Bento (-18°C)</td>
+                  <td class="px-4 py-3 text-slate-400 line-through whitespace-nowrap">Rp 50.000</td>
+                  <td class="px-4 py-3 font-bold text-[#ea580c] whitespace-nowrap">Rp 40.000</td>
+                  <td class="px-4 py-3 text-center whitespace-nowrap">
+                    <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold whitespace-nowrap inline-flex items-center">Aktif Dijual</span>
+                  </td>
+                  <td class="px-4 py-3 text-right whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <button onclick="openEditProductModal('Spicy Chicken Nugget', 40000, 50000)" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-bold text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 shadow-2xs hover:border-slate-300 active:scale-95 tab-transition cursor-pointer">
+                        <span>✏️</span>
+                        <span>Edit</span>
+                      </button>
+                      <button onclick="toggleProductStatus(this, 'Spicy Chicken Nugget')" title="Ubah Status Ketersediaan" class="inline-flex items-center justify-center w-7 h-7 rounded-lg text-slate-400 hover:text-amber-700 hover:bg-amber-50 border border-slate-200 hover:border-amber-200 active:scale-95 tab-transition cursor-pointer">
+                        <span class="text-xs">⏸️</span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================== -->
+      <!-- VIEW 3: TRANSAKSI & PESANAN (Midtrans Engine)                         -->
+      <!-- ===================================================================== -->
+      <section id="cms-view-orders" class="cms-view hidden space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <h2 class="text-sm font-extrabold text-[#0f172a]">Daftar Seluruh Pesanan & Transaksi</h2>
+            <p class="text-xs text-[#64748b]">Rekonsiliasi data pembayaran Midtrans dengan nomor WhatsApp pembeli.</p>
+          </div>
+
+          <!-- Status Filters -->
+          <div class="flex items-center gap-1.5 bg-slate-100 p-1 rounded-lg border border-slate-200 text-xs font-semibold">
+            <button class="px-3 py-1 rounded bg-white text-[#0f172a] shadow-xs">Semua (24)</button>
+            <button class="px-3 py-1 rounded text-slate-600 hover:text-[#0f172a]">Lunas (18)</button>
+            <button class="px-3 py-1 rounded text-slate-600 hover:text-[#0f172a]">Menunggu (4)</button>
+            <button class="px-3 py-1 rounded text-slate-600 hover:text-[#0f172a]">Kadaluarsa (2)</button>
+          </div>
+        </div>
+
+        <div class="bg-white border border-[#e2e8f0] rounded-xl cms-card overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-xs text-left">
+              <thead class="bg-slate-50 text-[#64748b] uppercase font-bold border-b border-[#e2e8f0]">
+                <tr>
+                  <th class="px-4 py-3 whitespace-nowrap">ID Invoice</th>
+                  <th class="px-4 py-3 whitespace-nowrap">Nama & WhatsApp</th>
+                  <th class="px-4 py-3 whitespace-nowrap">Program Dibeli</th>
+                  <th class="px-4 py-3 whitespace-nowrap">Metode Bayar</th>
+                  <th class="px-4 py-3 text-right whitespace-nowrap">Total Tagihan</th>
+                  <th class="px-4 py-3 text-center whitespace-nowrap">Status</th>
+                  <th class="px-4 py-3 text-right whitespace-nowrap">Aksi &amp; Tindakan</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-[#e2e8f0]">
+                <tr class="hover:bg-slate-50">
+                  <td class="px-4 py-3 font-mono font-bold text-[#0f172a] whitespace-nowrap">KND-20261029-4821</td>
+                  <td class="px-4 py-3 font-bold text-[#0f172a] whitespace-nowrap">
+                    Adam Kurniawan
+                    <span class="block text-slate-500 font-normal text-xs">adam@example.com</span>
+                    <a href="https://wa.me/6281234567890" target="_blank" class="text-xs text-emerald-600 font-bold hover:underline">WA: 081234567890 ↗</a>
+                  </td>
+                  <td class="px-4 py-3 text-[#64748b] whitespace-nowrap">Resep Sehat TCM (E-Book)</td>
+                  <td class="px-4 py-3 font-semibold text-slate-700 whitespace-nowrap">QRIS (GoPay)</td>
+                  <td class="px-4 py-3 text-right font-black text-[#ea580c] whitespace-nowrap">Rp 99.000</td>
+                  <td class="px-4 py-3 text-center whitespace-nowrap">
+                    <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold whitespace-nowrap inline-flex items-center">PAID</span>
+                  </td>
+                  <td class="px-4 py-3 text-right whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <button onclick="resendDownloadLink('081234567890', 'KND-20261029-4821')" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 shadow-2xs hover:shadow-xs active:scale-95 tab-transition cursor-pointer whitespace-nowrap">
+                        <span>💬</span>
+                        <span>Kirim WA</span>
+                      </button>
+                      <button onclick="showInvoiceDetail('KND-20261029-4821', 'Adam Kurniawan', '081234567890', 'Resep Sehat TCM (E-Book 25 Hal)', 'QRIS (GoPay)', 99000, 'PAID')" title="Lihat Rekonsiliasi Midtrans" class="inline-flex items-center justify-center w-7 h-7 rounded-lg text-slate-500 hover:text-[#0f172a] hover:bg-slate-100 border border-slate-200 active:scale-95 tab-transition cursor-pointer">
+                        <span class="text-xs">👁️</span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="px-4 py-3 font-mono font-bold text-[#0f172a] whitespace-nowrap">KND-20261029-4820</td>
+                  <td class="px-4 py-3 font-bold text-[#0f172a] whitespace-nowrap">
+                    Siti Rahma
+                    <span class="block text-slate-500 font-normal text-xs">siti@example.com</span>
+                    <a href="https://wa.me/6281398765432" target="_blank" class="text-xs text-emerald-600 font-bold hover:underline">WA: 081398765432 ↗</a>
+                  </td>
+                  <td class="px-4 py-3 text-[#64748b] whitespace-nowrap">Keripik Gadung Sehat (5 Pack)</td>
+                  <td class="px-4 py-3 font-semibold text-slate-700 whitespace-nowrap">BCA Virtual Account</td>
+                  <td class="px-4 py-3 text-right font-black text-[#ea580c] whitespace-nowrap">Rp 125.000</td>
+                  <td class="px-4 py-3 text-center whitespace-nowrap">
+                    <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold whitespace-nowrap inline-flex items-center">PAID</span>
+                  </td>
+                  <td class="px-4 py-3 text-right whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <button onclick="resendDownloadLink('081398765432', 'KND-20261029-4820')" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 shadow-2xs hover:shadow-xs active:scale-95 tab-transition cursor-pointer whitespace-nowrap">
+                        <span>💬</span>
+                        <span>Kirim WA</span>
+                      </button>
+                      <button onclick="showInvoiceDetail('KND-20261029-4820', 'Siti Rahma', '081398765432', 'Keripik Gadung Sehat (5 Pack)', 'BCA Virtual Account', 125000, 'PAID')" title="Lihat Rekonsiliasi Midtrans" class="inline-flex items-center justify-center w-7 h-7 rounded-lg text-slate-500 hover:text-[#0f172a] hover:bg-slate-100 border border-slate-200 active:scale-95 tab-transition cursor-pointer">
+                        <span class="text-xs">👁️</span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="px-4 py-3 font-mono font-bold text-[#0f172a] whitespace-nowrap">KND-20261029-4818</td>
+                  <td class="px-4 py-3 font-bold text-[#0f172a] whitespace-nowrap">
+                    Dian Pratama
+                    <span class="block text-slate-500 font-normal text-xs">dian@example.com</span>
+                    <span class="text-slate-500 text-xs block">WA: 087788990011</span>
+                  </td>
+                  <td class="px-4 py-3 text-[#64748b] whitespace-nowrap">Kanirol Bento 2 Pack + Ekado</td>
+                  <td class="px-4 py-3 font-semibold text-slate-700 whitespace-nowrap">QRIS (OVO)</td>
+                  <td class="px-4 py-3 text-right font-black text-[#ea580c] whitespace-nowrap">Rp 135.000</td>
+                  <td class="px-4 py-3 text-center whitespace-nowrap">
+                    <span class="px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800 font-bold whitespace-nowrap inline-flex items-center">PENDING</span>
+                  </td>
+                  <td class="px-4 py-3 text-right whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <button onclick="checkPaymentStatus('KND-20261029-4818')" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold text-amber-800 bg-amber-50 hover:bg-amber-100 border border-amber-200 shadow-2xs hover:shadow-xs active:scale-95 tab-transition cursor-pointer whitespace-nowrap">
+                        <span>🔄</span>
+                        <span>Cek Status</span>
+                      </button>
+                      <button onclick="showInvoiceDetail('KND-20261029-4818', 'Dian Pratama', '087788990011', 'Kanirol Bento 2 Pack + Ekado', 'QRIS (OVO)', 135000, 'PENDING')" title="Lihat Rekonsiliasi Midtrans" class="inline-flex items-center justify-center w-7 h-7 rounded-lg text-slate-500 hover:text-[#0f172a] hover:bg-slate-100 border border-slate-200 active:scale-95 tab-transition cursor-pointer">
+                        <span class="text-xs">👁️</span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================== -->
+      <!-- VIEW 4: MANAJEMEN ARTIKEL                                             -->
+      <!-- ===================================================================== -->
+      <section id="cms-view-articles" class="cms-view hidden space-y-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-sm font-extrabold text-[#0f172a]">Manajemen Artikel & Edukasi Gizi</h2>
+            <p class="text-xs text-[#64748b]">Tulis konten kesehatan yang memicu konversi langsung ke pembelian program.</p>
+          </div>
+          <button onclick="openAddArticleModal()" class="px-3.5 py-2 bg-[#ea580c] hover:bg-[#c2410c] text-white text-xs font-bold rounded-lg shadow-sm tab-transition flex items-center gap-1.5 cursor-pointer">
+            <span>+</span> Tulis Artikel Baru
+          </button>
+        </div>
+
+        <div class="bg-white border border-[#e2e8f0] rounded-xl cms-card overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-xs text-left">
+              <thead class="bg-slate-50 text-[#64748b] uppercase font-bold border-b border-[#e2e8f0]">
+                <tr>
+                  <th class="px-4 py-3 whitespace-nowrap">Judul Artikel</th>
+                  <th class="px-4 py-3 whitespace-nowrap">Kategori</th>
+                  <th class="px-4 py-3 whitespace-nowrap">Waktu Baca</th>
+                  <th class="px-4 py-3 whitespace-nowrap">Produk Tersemat</th>
+                  <th class="px-4 py-3 text-center whitespace-nowrap">Status</th>
+                  <th class="px-4 py-3 text-right whitespace-nowrap">Aksi</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-[#e2e8f0]">
+                <tr class="hover:bg-slate-50">
+                  <td class="px-4 py-3 font-bold text-[#0f172a] whitespace-nowrap">
+                    Rahasia Defisit Kalori Tanpa Lemas dan Kelaparan Ekstrem
+                    <span class="block text-slate-400 font-normal text-xs font-mono">/artikel/rahasia-defisit-kalori</span>
+                  </td>
+                  <td class="px-4 py-3 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-orange-100 text-orange-800 font-bold whitespace-nowrap inline-block">Pola Makan</span></td>
+                  <td class="px-4 py-3 text-[#64748b] whitespace-nowrap">4 Menit</td>
+                  <td class="px-4 py-3 font-semibold text-[#ea580c] whitespace-nowrap">Menu Diet Sehat (Rp 99rb)</td>
+                  <td class="px-4 py-3 text-center whitespace-nowrap">
+                    <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold whitespace-nowrap inline-flex items-center">Published</span>
+                  </td>
+                  <td class="px-4 py-3 text-right whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <button onclick="openEditArticleModal('Rahasia Defisit Kalori Tanpa Lemas dan Kelaparan Ekstrem')" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-bold text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 shadow-2xs hover:border-slate-300 active:scale-95 tab-transition cursor-pointer">
+                        <span>✏️</span>
+                        <span>Edit</span>
+                      </button>
+                      <a href="kanidee_storefront_mockup.html#artikel" target="_blank" title="Lihat Pratinjau di Toko Customer" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-semibold text-orange-700 bg-orange-50 hover:bg-orange-100 border border-orange-200/80 active:scale-95 tab-transition cursor-pointer">
+                        <span>↗</span>
+                        <span>Pratinjau</span>
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================== -->
+      <!-- VIEW 5: VOUCHER & PROMO                                               -->
+      <!-- ===================================================================== -->
+      <section id="cms-view-vouchers" class="cms-view hidden space-y-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-sm font-extrabold text-[#0f172a]">Manajemen Kode Voucher & Promo</h2>
+            <p class="text-xs text-[#64748b]">Atur potongan diskon untuk kampanye Instagram, TikTok, atau Meta Ads.</p>
+          </div>
+          <button onclick="openAddVoucherModal()" class="px-3.5 py-2 bg-[#ea580c] hover:bg-[#c2410c] text-white text-xs font-bold rounded-lg shadow-sm tab-transition flex items-center gap-1.5 cursor-pointer">
+            <span>+</span> Buat Kode Voucher
+          </button>
+        </div>
+
+        <div class="bg-white border border-[#e2e8f0] rounded-xl cms-card overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-xs text-left">
+              <thead class="bg-slate-50 text-[#64748b] uppercase font-bold border-b border-[#e2e8f0]">
+                <tr>
+                  <th class="px-4 py-3 whitespace-nowrap">Kode Kupon</th>
+                  <th class="px-4 py-3 whitespace-nowrap">Nilai Potongan</th>
+                  <th class="px-4 py-3 whitespace-nowrap">Penggunaan</th>
+                  <th class="px-4 py-3 whitespace-nowrap">Periode Berlaku</th>
+                  <th class="px-4 py-3 text-center whitespace-nowrap">Status</th>
+                  <th class="px-4 py-3 text-right whitespace-nowrap">Aksi</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-[#e2e8f0]">
+                <tr class="hover:bg-slate-50">
+                  <td class="px-4 py-3 font-mono font-extrabold text-orange-600 text-sm whitespace-nowrap">KANIDEE50</td>
+                  <td class="px-4 py-3 font-bold text-[#0f172a] whitespace-nowrap">Potongan Rp 50.000</td>
+                  <td class="px-4 py-3 text-[#64748b] whitespace-nowrap">14 dari 100 kuota</td>
+                  <td class="px-4 py-3 text-[#64748b] whitespace-nowrap">Sampai 31 Des 2026</td>
+                  <td class="px-4 py-3 text-center whitespace-nowrap">
+                    <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold whitespace-nowrap inline-flex items-center">Aktif</span>
+                  </td>
+                  <td class="px-4 py-3 text-right whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <button onclick="openEditVoucherModal('KANIDEE50', 50000, 100)" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-bold text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 shadow-2xs hover:border-slate-300 active:scale-95 tab-transition cursor-pointer">
+                        <span>✏️</span>
+                        <span>Edit</span>
+                      </button>
+                      <button onclick="copyVoucherCode('KANIDEE50')" title="Salin Kode Voucher" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-semibold text-slate-600 bg-slate-50 hover:bg-slate-100 border border-slate-200 active:scale-95 tab-transition cursor-pointer">
+                        <span>📋</span>
+                        <span>Salin</span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="px-4 py-3 font-mono font-extrabold text-orange-600 text-sm whitespace-nowrap">HEMAT10</td>
+                  <td class="px-4 py-3 font-bold text-[#0f172a] whitespace-nowrap">Potongan Rp 20.000</td>
+                  <td class="px-4 py-3 text-[#64748b] whitespace-nowrap">88 dari 500 kuota</td>
+                  <td class="px-4 py-3 text-[#64748b] whitespace-nowrap">Sampai 30 Nov 2026</td>
+                  <td class="px-4 py-3 text-center whitespace-nowrap">
+                    <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold whitespace-nowrap inline-flex items-center">Aktif</span>
+                  </td>
+                  <td class="px-4 py-3 text-right whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <button onclick="openEditVoucherModal('HEMAT10', 20000, 500)" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-bold text-slate-700 bg-white hover:bg-slate-50 border border-slate-200 shadow-2xs hover:border-slate-300 active:scale-95 tab-transition cursor-pointer">
+                        <span>✏️</span>
+                        <span>Edit</span>
+                      </button>
+                      <button onclick="copyVoucherCode('HEMAT10')" title="Salin Kode Voucher" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-semibold text-slate-600 bg-slate-50 hover:bg-slate-100 border border-slate-200 active:scale-95 tab-transition cursor-pointer">
+                        <span>📋</span>
+                        <span>Salin</span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================== -->
+      <!-- VIEW 6: PENGATURAN & INTEGRASI                                        -->
+      <!-- ===================================================================== -->
+      <section id="cms-view-settings" class="cms-view hidden space-y-4">
+        <div>
+          <h2 class="text-sm font-extrabold text-[#0f172a]">Pengaturan Sistem & Gateway Pembayaran</h2>
+          <p class="text-xs text-[#64748b]">Kredensial keamanan Midtrans, parameter webhook, dan watermarking PDF otomatis.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Gateway Settings -->
+          <div class="bg-white border border-[#e2e8f0] rounded-xl p-5 cms-card space-y-3">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-[#0f172a] pb-2 border-b border-[#e2e8f0]">Midtrans Payment Gateway</h3>
+            <div class="space-y-2.5 text-xs">
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">Environment Mode</label>
+                <div class="px-3 py-2 bg-emerald-50 border border-emerald-200 rounded-lg text-emerald-800 font-bold">Production (Live Transaksi Riil)</div>
+              </div>
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">Webhook Endpoint URL</label>
+                <input type="text" readonly value="https://kanidee.com/api/webhooks/midtrans" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg font-mono text-slate-600">
+              </div>
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">Enkripsi Validasi Signature</label>
+                <div class="px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-700">SHA-512 (Strict Match order_id + status_code + gross_amount)</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PDF License Watermark Settings -->
+          <div class="bg-white border border-[#e2e8f0] rounded-xl p-5 cms-card space-y-3">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-[#0f172a] pb-2 border-b border-[#e2e8f0]">Watermark PDF Anti-Piracy</h3>
+            <div class="space-y-2.5 text-xs">
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">Format Teks Watermark</label>
+                <input type="text" value="Lisensi Resmi: {{nama_pembeli}} • WhatsApp: {{nomor_wa}} • KND-{{order_id}}" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-800 font-mono">
+              </div>
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">Batas Waktu Akses Unduh (SLA)</label>
+                <div class="px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-700">72 Jam (3 Hari) Sejak Transaksi Lunas</div>
+              </div>
+              <div class="pt-2">
+                <button onclick="saveCmsSettings()" class="px-4 py-2 bg-[#0f172a] hover:bg-black text-white font-bold rounded-lg tab-transition cursor-pointer">
+                  Simpan Konfigurasi
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 3. STANDARDIZED CMS NOTIFICATION MODAL & TOAST COMPONENT                   -->
+  <!-- ========================================================================= -->
+  <div id="cms-modal-dialog" onclick="if(event.target === this) closeCmsModal()" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-[9999] flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl w-full max-w-md p-6 space-y-4 shadow-2xl border border-slate-200 text-left tab-transition">
+      <div class="flex items-start gap-3.5">
+        <div id="cms-modal-icon-box" class="w-11 h-11 rounded-xl bg-orange-100 text-orange-700 flex items-center justify-center text-xl shrink-0 font-bold">
+          🔔
+        </div>
+        <div class="flex-1 min-w-0">
+          <span id="cms-modal-badge" class="text-[11px] font-bold uppercase tracking-wider text-orange-800 bg-orange-100 px-2.5 py-0.5 rounded-md inline-block mb-1">
+            WEBHOOK MIDTRANS LIVE
+          </span>
+          <h3 id="cms-modal-title" class="text-base font-extrabold text-[#0f172a] leading-snug">
+            Notifikasi Settlement Pembayaran Baru
+          </h3>
+        </div>
+        <button onclick="closeCmsModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-700 text-xs font-bold flex items-center justify-center cursor-pointer tab-transition">✕</button>
+      </div>
+      
+      <!-- Body Content -->
+      <div id="cms-modal-body" class="text-xs text-[#64748b] leading-relaxed pt-1 space-y-2">
+      </div>
+      
+      <!-- Actions -->
+      <div id="cms-modal-actions" class="pt-3 border-t border-slate-100 flex items-center justify-end gap-2">
+        <button onclick="closeCmsModal()" class="w-full py-2.5 px-4 rounded-xl bg-[#0f172a] hover:bg-[#1e293b] active:scale-[0.98] text-white text-xs font-extrabold shadow-md tab-transition cursor-pointer">
+          Mengerti &amp; Tutup
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Toast Notifications Container (Bottom-Right Enterprise Dock) -->
+  <div id="cms-toast-container" class="fixed bottom-6 right-6 z-[9999] flex flex-col-reverse gap-2.5 pointer-events-none max-w-md w-full px-4"></div>
+
+  <!-- ========================================================================= -->
+  <!-- 4. JAVASCRIPT CMS CONTROLLER                                              -->
+  <!-- ========================================================================= -->
+  <script>
+    let currentOmzet = 2450000;
+    let currentPaidOrders = 18;
+
+    // Toast Notification System (Non-truncating, Bottom-Right Enterprise Dock)
+    function showCmsToast({ title, message, type = 'success' }) {
+      const container = document.getElementById('cms-toast-container');
+      if (!container) return;
+      const toast = document.createElement('div');
+      const isSuccess = type === 'success';
+      const icon = isSuccess ? '✓' : 'ℹ';
+      const iconBg = isSuccess ? 'bg-emerald-500' : 'bg-[#ea580c]';
+      
+      toast.className = 'bg-[#0f172a] text-white border border-slate-700/80 pointer-events-auto rounded-xl p-3.5 shadow-2xl flex items-start gap-3 transition-all transform translate-y-3 opacity-0 duration-200';
+      toast.innerHTML = `
+        <span class="w-6 h-6 rounded-full ${iconBg} text-white flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">${icon}</span>
+        <div class="flex-1 min-w-0">
+          <span class="text-xs font-bold block leading-tight text-white">${title}</span>
+          <span class="text-xs text-slate-300 block leading-relaxed mt-0.5 whitespace-normal">${message}</span>
+        </div>
+        <button onclick="this.parentElement.remove()" class="text-slate-400 hover:text-white text-xs font-bold p-1 cursor-pointer">✕</button>
+      `;
+      container.appendChild(toast);
+      requestAnimationFrame(() => {
+        toast.classList.remove('translate-y-3', 'opacity-0');
+      });
+      setTimeout(() => {
+        toast.classList.add('translate-y-3', 'opacity-0');
+        setTimeout(() => toast.remove(), 250);
+      }, 4000);
+    }
+
+    // Standardized Custom Modal (Zero window.alert)
+    function showCmsModal({ title, badge = 'WEBHOOK EVENT', badgeColor = 'orange', icon = '🔔', htmlContent }) {
+      const modal = document.getElementById('cms-modal-dialog');
+      document.getElementById('cms-modal-title').innerText = title;
+      document.getElementById('cms-modal-badge').innerText = badge;
+      
+      const iconBox = document.getElementById('cms-modal-icon-box');
+      iconBox.innerText = icon;
+      
+      const badgeEl = document.getElementById('cms-modal-badge');
+      if (badgeColor === 'emerald') {
+        iconBox.className = 'w-11 h-11 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-xl shrink-0 font-bold';
+        badgeEl.className = 'text-[11px] font-bold uppercase tracking-wider text-emerald-800 bg-emerald-100 px-2.5 py-0.5 rounded-md inline-block mb-1';
+      } else {
+        iconBox.className = 'w-11 h-11 rounded-xl bg-orange-100 text-orange-700 flex items-center justify-center text-xl shrink-0 font-bold';
+        badgeEl.className = 'text-[11px] font-bold uppercase tracking-wider text-orange-800 bg-orange-100 px-2.5 py-0.5 rounded-md inline-block mb-1';
+      }
+
+      document.getElementById('cms-modal-body').innerHTML = htmlContent;
+      modal.classList.remove('hidden');
+    }
+
+    function closeCmsModal() {
+      const modal = document.getElementById('cms-modal-dialog');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function switchCmsTab(tabId) {
+      document.querySelectorAll('.cms-view').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.cms-nav-item').forEach(el => {
+        el.classList.remove('bg-[#ea580c]', 'text-white');
+        el.classList.add('text-slate-300');
+      });
+
+      const target = document.getElementById('cms-view-' + tabId);
+      if (target) target.classList.remove('hidden');
+
+      const activeNav = document.getElementById('cms-tab-' + tabId);
+      if (activeNav) {
+        activeNav.classList.add('bg-[#ea580c]', 'text-white');
+        activeNav.classList.remove('text-slate-300');
+      }
+
+      // Update header titles
+      const titles = {
+        'dashboard': ['Dashboard & Analisis Penjualan', 'Pantau pendapatan omzet real-time, status pembayaran Midtrans, dan performa program.'],
+        'products': ['Katalog Produk Digital', 'Kelola harga jual, file digital master PDF, dan ketersediaan di web customer.'],
+        'orders': ['Transaksi & Rekonsiliasi Pesanan', 'Semua riwayat pembayaran QRIS, Virtual Account, dan integrasi WhatsApp pembeli.'],
+        'articles': ['Manajemen Artikel Nutrisi', 'Publikasi konten edukasi pola makan yang terintegrasi langsung dengan konversi pembelian.'],
+        'vouchers': ['Manajemen Voucher Diskon', 'Atur kode kupon promosi, kuota pemakaian, dan batas potongan belanja.'],
+        'settings': ['Pengaturan Gateway & Sistem', 'Konfigurasi kredensial Midtrans Production, Webhook SHA-512, dan lisensi watermark PDF.']
+      };
+
+      if (titles[tabId]) {
+        document.getElementById('cms-header-title').innerText = titles[tabId][0];
+        document.getElementById('cms-header-subtitle').innerText = titles[tabId][1];
+      }
+    }
+
+    function simulateNewOrderPush() {
+      currentOmzet += 199000;
+      currentPaidOrders += 1;
+
+      document.getElementById('dash-omzet-val').innerText = 'Rp ' + currentOmzet.toLocaleString('id-ID');
+      document.getElementById('dash-paid-orders-val').innerText = currentPaidOrders + ' Pesanan';
+
+      const tbody = document.getElementById('dash-recent-table-body');
+      const newRow = document.createElement('tr');
+      newRow.className = 'hover:bg-slate-50 bg-emerald-50/50 transition-colors';
+      const orderNum = Math.floor(1000 + Math.random() * 9000);
+      newRow.innerHTML = `
+        <td class="px-3.5 py-3 font-mono font-bold text-emerald-800 whitespace-nowrap">KND-20261029-${orderNum}</td>
+        <td class="px-3.5 py-3 font-bold text-[#0f172a] whitespace-nowrap">Pelanggan Baru (Simulasi) <span class="block text-slate-400 font-normal text-xs">081299887766</span></td>
+        <td class="px-3.5 py-3 text-[#64748b] whitespace-nowrap">Menu Sehat Paripurna</td>
+        <td class="px-3.5 py-3 whitespace-nowrap"><span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold whitespace-nowrap inline-block">QRIS Instant</span></td>
+        <td class="px-3.5 py-3 text-right font-black text-[#ea580c] whitespace-nowrap">Rp 199.000</td>
+        <td class="px-3.5 py-3 text-center whitespace-nowrap"><span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold animate-pulse whitespace-nowrap inline-flex items-center gap-1">JUST PAID</span></td>
+        <td class="px-3.5 py-3 text-right whitespace-nowrap">
+          <button onclick="showInvoiceDetail('KND-20261029-${orderNum}', 'Pelanggan Baru (Simulasi)', '081299887766', 'Menu Sehat Paripurna', 'QRIS Instant', 199000, 'PAID')" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-bold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 shadow-2xs active:scale-95 tab-transition cursor-pointer">
+            <span>👁️</span> Detail
+          </button>
+        </td>
+      `;
+      tbody.insertBefore(newRow, tbody.firstChild);
+
+      // Trigger Modern Standardized Modal Dialog (Replaces native window.alert)
+      showCmsModal({
+        title: 'Notifikasi Settlement Webhook Midtrans',
+        badge: 'MIDTRANS SHA-512 VERIFIED',
+        badgeColor: 'emerald',
+        icon: '🔔',
+        htmlContent: `
+          <div class="bg-slate-50 border border-slate-200 rounded-xl p-3.5 space-y-2 text-xs">
+            <div class="flex justify-between"><span class="text-slate-400">Invoice:</span><span class="font-mono font-bold text-emerald-700">KND-20261029-${orderNum}</span></div>
+            <div class="flex justify-between"><span class="text-slate-400">Status Pembayaran:</span><span class="font-bold text-emerald-700">SETTLEMENT (LUNAS)</span></div>
+            <div class="flex justify-between"><span class="text-slate-400">Nominal:</span><span class="font-black text-[#ea580c]">Rp 199.000</span></div>
+            <div class="flex justify-between"><span class="text-slate-400">Metode Bayar:</span><span class="font-bold text-[#0f172a]">QRIS Instant (Midtrans)</span></div>
+            <div class="flex justify-between border-t border-slate-200 pt-1.5"><span class="text-slate-500 font-semibold">Total Omzet Sekarang:</span><span class="font-black text-[#0f172a]">Rp ${currentOmzet.toLocaleString('id-ID')}</span></div>
+          </div>
+          <p class="text-xs text-slate-500 pt-1">Pesanan telah otomatis direkonsiliasi ke dalam tabel database dan lisensi PDF telah di-generate.</p>
+        `
+      });
+
+      showCmsToast({
+        title: 'Transaksi Lunas',
+        message: 'Invoice KND-20261029-' + orderNum + ' berhasil diselesaikan (Rp 199.000)'
+      });
+    }
+
+    // Modal Handler: Tambah Produk Baru
+    function openAddProductModal() {
+      showCmsModal({
+        title: 'Tambah Produk Digital Baru',
+        badge: 'KATALOG PRODUK',
+        badgeColor: 'orange',
+        icon: '📦',
+        htmlContent: `
+          <div class="space-y-3 text-xs">
+            <div>
+              <label class="block font-bold text-slate-700 mb-1">Nama / Judul Produk</label>
+              <input type="text" placeholder="Contoh: Paket Pola Makan 60 Hari" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-800 text-xs focus:ring-2 focus:ring-[#ea580c] outline-none">
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">Harga Normal (Rp)</label>
+                <input type="number" placeholder="299000" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-800 text-xs">
+              </div>
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">Harga Promo (Rp)</label>
+                <input type="number" placeholder="199000" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-800 text-xs font-bold text-[#ea580c]">
+              </div>
+            </div>
+            <div>
+              <label class="block font-bold text-slate-700 mb-1">Upload File Master PDF</label>
+              <input type="file" accept=".pdf" class="w-full text-slate-500 text-xs file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-orange-50 file:text-[#ea580c] hover:file:bg-orange-100 cursor-pointer">
+            </div>
+            <div class="pt-2 flex justify-end gap-2">
+              <button onclick="closeCmsModal()" class="px-3 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs cursor-pointer">Batal</button>
+              <button onclick="closeCmsModal(); showCmsToast({ title: 'Produk Disimpan', message: 'Katalog baru berhasil ditambahkan dan siap dijual di web customer' });" class="px-4 py-2 rounded-lg bg-[#ea580c] hover:bg-[#c2410c] text-white font-bold text-xs shadow cursor-pointer">Simpan Produk</button>
+            </div>
+          </div>
+        `
+      });
+    }
+
+    // Modal Handler: Kirim Ulang Link Download
+    function resendDownloadLink(phone, invoiceId) {
+      showCmsModal({
+        title: 'Konfirmasi Kirim Ulang Link',
+        badge: 'INTEGRASI WHATSAPP',
+        badgeColor: 'emerald',
+        icon: '📱',
+        htmlContent: `
+          <div class="space-y-3 text-xs">
+            <p class="text-slate-600">Anda akan mengirimkan tautan unduh resmi yang ter-watermark nama & no WA pembeli untuk tagihan <strong>${invoiceId}</strong> ke:</p>
+            <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center justify-between">
+              <div>
+                <span class="text-slate-500 block text-[11px]">Nomor Tujuan WhatsApp:</span>
+                <span class="text-emerald-800 font-bold font-mono text-sm">${phone}</span>
+              </div>
+              <span class="px-2 py-1 rounded bg-emerald-200 text-emerald-900 font-bold text-[10px]">VERIFIED</span>
+            </div>
+            <p class="text-slate-400 text-[11px]">Token download unik berlaku 72 jam sejak tautan pertama kali dikirimkan.</p>
+            <div class="pt-2 flex justify-end gap-2">
+              <button onclick="closeCmsModal()" class="px-3 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs cursor-pointer">Batal</button>
+              <button onclick="closeCmsModal(); showCmsToast({ title: 'Link Berhasil Dikirim', message: 'Tautan unduh PDF ber-watermark terkirim ke WhatsApp ' + '${phone}' });" class="px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow cursor-pointer">Kirim Sekarang</button>
+            </div>
+          </div>
+        `
+      });
+    }
+
+    // Modal Handler: Tulis Artikel Baru
+    function openAddArticleModal() {
+      showCmsModal({
+        title: 'Editor Artikel Edukasi Gizi',
+        badge: 'KONTEN & SEO',
+        badgeColor: 'orange',
+        icon: '✍️',
+        htmlContent: `
+          <div class="space-y-3 text-xs">
+            <div>
+              <label class="block font-bold text-slate-700 mb-1">Judul Artikel</label>
+              <input type="text" placeholder="Contoh: Mengapa Defisit Kalori Tanpa Lemas Lebih Berkelanjutan" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-800 text-xs focus:ring-2 focus:ring-[#ea580c] outline-none">
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">Kategori</label>
+                <select class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-800 text-xs">
+                  <option>Edukasi Kalori</option>
+                  <option>Resep &amp; Menu</option>
+                  <option>Tips &amp; Mindset</option>
+                </select>
+              </div>
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">Embed CTA Produk</label>
+                <select class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-800 text-xs font-semibold">
+                  <option>Menu Diet 30 Hari</option>
+                  <option>Pelatihan Menu Sehat</option>
+                  <option>Maduka Formula</option>
+                </select>
+              </div>
+            </div>
+            <div class="pt-2 flex justify-end gap-2">
+              <button onclick="closeCmsModal()" class="px-3 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs cursor-pointer">Batal</button>
+              <button onclick="closeCmsModal(); showCmsToast({ title: 'Artikel Disimpan Draft', message: 'Draf artikel disimpan dan siap ditinjau sebelum dipublish' });" class="px-4 py-2 rounded-lg bg-[#ea580c] hover:bg-[#c2410c] text-white font-bold text-xs shadow cursor-pointer">Simpan Draf</button>
+            </div>
+          </div>
+        `
+      });
+    }
+
+    // Modal Handler: Tambah Kode Voucher
+    function openAddVoucherModal() {
+      showCmsModal({
+        title: 'Buat Kode Voucher Promosi Baru',
+        badge: 'MARKETING & PROMO',
+        badgeColor: 'orange',
+        icon: '🏷️',
+        htmlContent: `
+          <div class="space-y-3 text-xs">
+            <div>
+              <label class="block font-bold text-slate-700 mb-1">Kode Kupon (Huruf Kapital)</label>
+              <input type="text" placeholder="Contoh: PROMOSEHAT25" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-800 text-xs uppercase font-mono font-bold focus:ring-2 focus:ring-[#ea580c] outline-none">
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">Potongan Harga (Rp)</label>
+                <input type="number" placeholder="25000" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-800 text-xs font-bold text-[#ea580c]">
+              </div>
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">Batas Kuota Pemakaian</label>
+                <input type="number" placeholder="100" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-800 text-xs">
+              </div>
+            </div>
+            <div class="pt-2 flex justify-end gap-2">
+              <button onclick="closeCmsModal()" class="px-3 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs cursor-pointer">Batal</button>
+              <button onclick="closeCmsModal(); showCmsToast({ title: 'Voucher Aktif', message: 'Kode voucher baru berhasil diaktifkan untuk promosi' });" class="px-4 py-2 rounded-lg bg-[#ea580c] hover:bg-[#c2410c] text-white font-bold text-xs shadow cursor-pointer">Aktifkan Voucher</button>
+            </div>
+          </div>
+        `
+      });
+    }
+
+    // Handler: Simpan Pengaturan
+    function saveCmsSettings() {
+      showCmsToast({
+        title: 'Konfigurasi Disimpan',
+        message: 'Kredensial Midtrans Production & lisensi watermark PDF berhasil diperbarui.'
+      });
+    }
+
+    // Modal Handler: Edit Produk
+    function openEditProductModal(name, promoPrice, normalPrice) {
+      showCmsModal({
+        title: 'Edit Katalog Produk',
+        badge: 'KATALOG PRODUK',
+        badgeColor: 'orange',
+        icon: '✏️',
+        htmlContent: `
+          <div class="space-y-3 text-xs">
+            <div>
+              <label class="block font-bold text-slate-700 mb-1">Nama Produk</label>
+              <input type="text" value="${name}" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-800 text-xs font-bold focus:ring-2 focus:ring-[#ea580c] outline-none">
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">Harga Normal (Rp)</label>
+                <input type="number" value="${normalPrice}" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-800 text-xs font-mono">
+              </div>
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">Harga Promo (Rp)</label>
+                <input type="number" value="${promoPrice}" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-800 text-xs font-mono font-bold text-[#ea580c]">
+              </div>
+            </div>
+            <div>
+              <label class="block font-bold text-slate-700 mb-1">Ganti Berkas Master PDF (Opsional)</label>
+              <input type="file" accept=".pdf" class="w-full text-slate-500 text-xs file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-orange-50 file:text-[#ea580c] hover:file:bg-orange-100 cursor-pointer">
+            </div>
+            <div class="pt-2 flex justify-end gap-2">
+              <button onclick="closeCmsModal()" class="px-3 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs cursor-pointer">Batal</button>
+              <button onclick="closeCmsModal(); showCmsToast({ title: 'Perubahan Disimpan', message: 'Katalog ' + '${name}' + ' berhasil diperbarui' });" class="px-4 py-2 rounded-lg bg-[#ea580c] hover:bg-[#c2410c] text-white font-bold text-xs shadow cursor-pointer">Simpan Perubahan</button>
+            </div>
+          </div>
+        `
+      });
+    }
+
+    // Toggle Product Status (Active / Paused)
+    function toggleProductStatus(btn, productName) {
+      showCmsToast({
+        title: 'Status Ketersediaan',
+        message: 'Ketersediaan produk ' + productName + ' berhasil dialihkan statusnya.',
+        type: 'info'
+      });
+    }
+
+    // Modal Handler: Detail Invoice & Rekonsiliasi Midtrans
+    function showInvoiceDetail(invoiceId, buyerName, buyerPhone, program, method, amount, status) {
+      const isPaid = status === 'PAID';
+      showCmsModal({
+        title: 'Detail Invoice & Bukti Transaksi',
+        badge: isPaid ? 'SETTLEMENT LUNAS' : 'MENUNGGU PEMBAYARAN',
+        badgeColor: isPaid ? 'emerald' : 'orange',
+        icon: isPaid ? '🧾' : '⏳',
+        htmlContent: `
+          <div class="space-y-3 text-xs">
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-3.5 space-y-2">
+              <div class="flex justify-between items-center"><span class="text-slate-400">ID Invoice:</span><span class="font-mono font-bold text-[#0f172a]">${invoiceId}</span></div>
+              <div class="flex justify-between items-center"><span class="text-slate-400">Nama Pelanggan:</span><span class="font-bold text-[#0f172a]">${buyerName}</span></div>
+              <div class="flex justify-between items-center"><span class="text-slate-400">WhatsApp:</span><span class="font-mono text-emerald-700 font-bold">${buyerPhone}</span></div>
+              <div class="flex justify-between items-center"><span class="text-slate-400">Program:</span><span class="font-semibold text-slate-700">${program}</span></div>
+              <div class="flex justify-between items-center"><span class="text-slate-400">Metode Bayar:</span><span class="font-semibold text-slate-700">${method}</span></div>
+              <div class="flex justify-between items-center border-t border-slate-200 pt-2"><span class="text-slate-500 font-bold">Total Pembayaran:</span><span class="font-black text-sm text-[#ea580c]">Rp ${amount.toLocaleString('id-ID')}</span></div>
+            </div>
+            
+            <div class="p-3 bg-orange-50/60 border border-orange-200 rounded-xl space-y-1">
+              <span class="text-[11px] font-bold text-orange-900 block">Format Watermark PDF Pembeli:</span>
+              <p class="font-mono text-[11px] text-slate-700 bg-white p-2 rounded border border-orange-100 break-all">Lisensi Resmi: ${buyerName} • WhatsApp: ${buyerPhone} • ${invoiceId}</p>
+            </div>
+
+            <div class="pt-2 flex justify-end gap-2">
+              <button onclick="closeCmsModal()" class="px-3 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs cursor-pointer">Tutup</button>
+              ${isPaid ? `<button onclick="closeCmsModal(); resendDownloadLink('${buyerPhone}', '${invoiceId}');" class="px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow cursor-pointer">Kirim Link WA</button>` : `<button onclick="closeCmsModal(); checkPaymentStatus('${invoiceId}');" class="px-4 py-2 rounded-lg bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs shadow cursor-pointer">Cek Midtrans</button>`}
+            </div>
+          </div>
+        `
+      });
+    }
+
+    // Check Midtrans Status for Pending Transactions
+    function checkPaymentStatus(invoiceId) {
+      showCmsToast({
+        title: 'Status Midtrans: PENDING',
+        message: 'Transaksi ' + invoiceId + ' belum dibayar oleh pembeli. QRIS masih aktif dalam masa tenggang 24 jam.',
+        type: 'info'
+      });
+    }
+
+    // Modal Handler: Edit Artikel
+    function openEditArticleModal(title) {
+      showCmsModal({
+        title: 'Edit Konten Artikel Nutrisi',
+        badge: 'KONTEN & SEO',
+        badgeColor: 'orange',
+        icon: '✍️',
+        htmlContent: `
+          <div class="space-y-3 text-xs">
+            <div>
+              <label class="block font-bold text-slate-700 mb-1">Judul Artikel</label>
+              <input type="text" value="${title}" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-800 text-xs font-bold focus:ring-2 focus:ring-[#ea580c] outline-none">
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">Kategori</label>
+                <select class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-800 text-xs font-semibold">
+                  <option selected>Pola Makan Sehat</option>
+                  <option>Edukasi Kalori</option>
+                  <option>Resep &amp; Menu</option>
+                </select>
+              </div>
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">Embed CTA Produk</label>
+                <select class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-800 text-xs font-semibold">
+                  <option selected>Menu Diet 30 Hari (Rp 99rb)</option>
+                  <option>Pelatihan Menu Sehat (Rp 199rb)</option>
+                  <option>Maduka Formula (Rp 249rb)</option>
+                </select>
+              </div>
+            </div>
+            <div class="pt-2 flex justify-end gap-2">
+              <button onclick="closeCmsModal()" class="px-3 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs cursor-pointer">Batal</button>
+              <button onclick="closeCmsModal(); showCmsToast({ title: 'Artikel Diperbarui', message: 'Perubahan artikel berhasil disimpan dan dipublikasikan.' });" class="px-4 py-2 rounded-lg bg-[#ea580c] hover:bg-[#c2410c] text-white font-bold text-xs shadow cursor-pointer">Simpan &amp; Publish</button>
+            </div>
+          </div>
+        `
+      });
+    }
+
+    // Modal Handler: Edit Voucher
+    function openEditVoucherModal(code, discount, quota) {
+      showCmsModal({
+        title: 'Edit Kupon Diskon & Promo',
+        badge: 'MARKETING & PROMO',
+        badgeColor: 'orange',
+        icon: '🏷️',
+        htmlContent: `
+          <div class="space-y-3 text-xs">
+            <div>
+              <label class="block font-bold text-slate-700 mb-1">Kode Kupon</label>
+              <input type="text" value="${code}" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-800 text-xs uppercase font-mono font-bold focus:ring-2 focus:ring-[#ea580c] outline-none">
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">Nilai Potongan (Rp)</label>
+                <input type="number" value="${discount}" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-800 text-xs font-mono font-bold text-[#ea580c]">
+              </div>
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">Batas Kuota Pemakaian</label>
+                <input type="number" value="${quota}" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-800 text-xs font-mono">
+              </div>
+            </div>
+            <div class="pt-2 flex justify-end gap-2">
+              <button onclick="closeCmsModal()" class="px-3 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs cursor-pointer">Batal</button>
+              <button onclick="closeCmsModal(); showCmsToast({ title: 'Voucher Diperbarui', message: 'Parameter kode voucher ' + '${code}' + ' berhasil diperbarui.' });" class="px-4 py-2 rounded-lg bg-[#ea580c] hover:bg-[#c2410c] text-white font-bold text-xs shadow cursor-pointer">Simpan Voucher</button>
+            </div>
+          </div>
+        `
+      });
+    }
+
+    // Copy Voucher Code to Clipboard
+    function copyVoucherCode(code) {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(code).catch(() => {});
+      }
+      showCmsToast({
+        title: 'Kode Kupon Disalin',
+        message: 'Kode voucher "' + code + '" berhasil disalin ke clipboard untuk promosi medsos.'
+      });
+    }
+
+    // Keyboard Accessibility: Close Modal with Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeCmsModal();
+      }
+    });
+  </script>
+</body>
+</html>
